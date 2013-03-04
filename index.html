@@ -5,7 +5,9 @@
     <title>The BNF Converter</title>
     <link rel="stylesheet" title="GF" href="http://www.grammaticalframework.org/css/style.css">
     <link rel="stylesheet" title="GF" href="bootstrap.min.css">
-<style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap-responsive.min.css" rel="stylesheet">
+    <style>
   table td { border: none; }
 </style>
 
@@ -66,9 +68,8 @@ language </li>
 
 <h2>A small example</h2>
 
-<table border="0" cellpadding=10>
-  <tr>
-     <td>
+<div class="row">
+<div class="span4">
        <table border="0">
 <tr>
 <td style="color:#586e75" colspan="2">-- file Calc.bnfc</td>
@@ -129,24 +130,24 @@ language </li>
 <tr>
 </tr>
 </table>
-
+</div>
+<div class="span4">
      </td>
      <td>
        <pre>
 
-      bnfc -haskell Calc.bnfc   
-      bnfc -c       Calc.bnfc   
-      bnfc -cpp     Calc.bnfc
-      bnfc -csharp  Calc.bnfc
-      bnfc -java    Calc.bnfc   
-      bnfc -ocaml   Calc.bnfc   
-       </pre>
-       </td>
-     <td>
+bnfc -haskell Calc.bnfc
+bnfc -c       Calc.bnfc
+bnfc -cpp     Calc.bnfc
+bnfc -csharp  Calc.bnfc
+bnfc -java    Calc.bnfc
+bnfc -ocaml   Calc.bnfc
+   </pre>
+</div>
+<div class="span4">
        <img width="200" src="bnfc.png">
-     </td>
-    </tr>
-    </table>
+</div>
+</div>
 
 
 <h2>Documentation</h2>
