@@ -1,0 +1,9 @@
+*.hi *.aux *.log *.dvi *.ps
+Abs*.hs 
+Doc*.tex
+ErrM.hs 
+Lex*.x 
+Par*
+Print*.hs
+Skel*.hs
+Test*.hs
