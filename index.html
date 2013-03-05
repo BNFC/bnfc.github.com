@@ -3,68 +3,117 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>The BNF Converter</title>
-    <link rel="stylesheet" title="GF" href="http://www.grammaticalframework.org/css/style.css">
-    <link rel="stylesheet" title="GF" href="bootstrap.min.css">
+    <link rel="stylesheet" title="GF" href="css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="bootstrap-responsive.min.css" rel="stylesheet">
-    <style>
-  table td { border: none; }
-</style>
-
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 
 <body>
 
-<p>
+<div class="container">
+  <div class="center section header">
+    <img class="grow" width="300" src="bnfc-logo.png">
+    <p>Version 2.5, March 2013
+    <p><a href="http://www.clt.gu.se/">Centre for Language Technology</a> 
+    <p> Chalmers University of Technology and University of Gothenburg
+  </div>
 
-  <div class="container">
-<div class="center">
 
-<img class="grow" width="300" src="bnfc-logo.png">
-  
-<p>
-<p>
+  <div class="row section">
 
-  Version 2.5, March 2013
-<p>
+    <div class="span6">
+      <h2>What is the BNF Converter?</h2>
+      <p>The BNF Converter is a compiler construction tool generating a
+          compiler front-end
+          from a <b>Labelled BNF grammar</b>. It is currently able to generate
+          C, C++, C#, Haskell, Java, and OCaml, as well as XML representations.
+      </p>
+      <p> Given a <b>Labelled BNF grammar</b> the tool produces: </p>
+      <ul>
+        <li>an abstract syntax implementation</li>
+        <li>a case skeleton for the abstract syntax in the same language</li>
+        <li>an <a href="http://www.haskell.org/alex"> Alex</a>,
+        <a href="http://www.cs.princeton.edu/~appel/modern/java/JLex/">JLex</a>,
+        or <a href="http://flex.sourceforge.net/">Flex</a> lexer generator file </li>
+        <li> a <a href="http://www.haskell.org/happy">Happy</a>,
+        <a href="http://www2.cs.tum.edu/projects/cup/">CUP</a>,
+        or <a href="http://www.gnu.org/software/bison/bison.html">Bison</a>
+        parser generator file</li>
+        <li> a pretty-printer as a Haskell/Java/C++/C module </li>
+        <li> a Latex file containing a readable specification of the
+        language </li>
+      </ul>
+    </div>
 
-  
-<a href="http://www.clt.gu.se/">Centre for Language Technology</a> 
-<br>
-  Chalmers University of Technology and University of Gothenburg
+
+    <div id="download-box" class="span5">
+      <h2>Download</h2>
+
+      <ul class="nav nav-tabs" id="downloadTab">
+        <li class="active"><a href="#packages">Packages</a></li>
+        <li><a href="#cabal">Cabal</a></li>
+        <li><a href="#git">git</a></li>
+      </ul>
+           
+      <div class="tab-content">
+        <div class="tab-pane active" id="packages">
+          <style>
+
+          </style>
+          <div class="row">
+            <span class="span2 "><a class="btn btn-block icon linux" href="#">Linux</a></span>
+            <span class="span2 "><a class="btn btn-block icon mac" href="#">Mac</a></span>
+            <span class="span2 "><a class="btn btn-block icon win" href="#">Windows</a></span>
+            <span class="span2 "><a class="btn btn-block icon tar" href="#">Sources</a></span>
+          </div>
+        </div>
+        <div class="tab-pane" id="cabal">
+          <p>Install by Cabal from Hackage:
+          <pre>$ cabal install bnfc</pre>
+        
+        </div>
+        <div class="tab-pane" id="git">
+          <p>Current development code (Source repository on <a href="https://github.com/BNFC/bnfc">GitHub</a>)
+          <pre>$ git clone https://github.org/BNFC/bnfc</pre>
+        </div>
+      </div>
+                   
+    </div> 
+  </div> 
+
+  <!-- Here starts the three columns row containing new, resources and book-->
+  <div class="row section">
+    <div class="span3">
+    <h2>News</h2>
+    <ul>
+      <li>2013-03-01: <a href="http://bnfc.digitalgrammars.com/download/bnfc-2.5-src.tgz">BNFC 2.5</a> released.
+      <li>2012-07-13: <a href="http://www.digitalgrammars.com/ipl-book/">Implementing Programming Languages</a>, a compiler book using BNFC.</li>
+    </ul>
+  </div>
+
+  <div class="span3 offset1">
+    <h2>Resources</h2>
+    <h3>Documentation</h3>
+    <ul>
+      <li><a href="./tutorial.html">Tutorial</a> </li>
+      <li><a href="./LBNF-report.pdf">Reference Manual</a>
+      <li><a href="http://www.digitalgrammars.com/ipl-book/">IPL book</a>
+    </ul>
+
+    <h3>Mailing list</h3>
+    <p>Send questions, bug reports, usage news, etc, to our <a href="https://groups.google.com/group/bnfc-dev?hl=en">Google group</a>.
+  </div>
+  <div class="span3 offset1">
+    <h2>Book</h2>
+    <div class="center">
+      <img style="max-width:60%" alt="Book cover" src="img/ipl-cover.png" />
+      <p><a href="http://www.digitalgrammars.com/ipl-book/">Implementing Programming Languages</a>, a compiler book using BNFC.
+    </div>
+  </div>
 </div>
 
-<h2>News</h2>
-<ul>
-  <li>2013-03-01: <a href="http://bnfc.digitalgrammars.com/download/bnfc-2.5-src.tgz">BNFC 2.5</a> released.
-  <li>2012-07-13: 
-    <a href="http://www.digitalgrammars.com/ipl-book/">Implementing Programming Languages</a>, a 
-    compiler book using BNFC.
-</li></ul>
-
-<h2>What is the BNF Converter?</h2>
-<p>The BNF Converter is a compiler construction tool generating a
-compiler front-end
-from a <b>Labelled BNF grammar</b>. It is currently able to generate
-C, C++, C#, Haskell, Java, and OCaml, as well as XML representations.
-</p>
-
-<p> Given a <b>Labelled BNF grammar</b> the tool produces: </p>
-<ul>
-  <li> an abstract syntax implementation</li>
-  <li>a case skeleton for the abstract syntax in the same language</li>
-  <li> an <a href="http://www.haskell.org/alex"> Alex</a>, <a href="http://www.cs.princeton.edu/~appel/modern/java/JLex/">JLex</a>,
-or <a href="http://flex.sourceforge.net/">Flex</a> lexer
-generator file </li>
-  <li> a <a href="http://www.haskell.org/happy">Happy</a>,
-<a href="http://www2.cs.tum.edu/projects/cup/">CUP</a>,
-or <a href="http://www.gnu.org/software/bison/bison.html">Bison</a>
-parser generator file</li>
-  <li> a pretty-printer as a Haskell/Java/C++/C module </li>
-  <li> a Latex file containing a readable specification of the
-language </li>
-</ul>
 
 <h2>A small example</h2>
 
@@ -149,53 +198,6 @@ bnfc -ocaml   Calc.bnfc
 </div>
 </div>
 
-
-<h2>Documentation</h2>
-<ul>
-
-  <li><a href="./tutorial.html">Tutorial</a> </li>
-  
-  <li><a
-  href="./LBNF-report.pdf">Reference Manual</a>
-
-  <li>  <a href="http://www.digitalgrammars.com/ipl-book/">Implementing Programming Languages</a>, a 
-    compiler book using BNFC.
-</ul>
-
-<h2 id="download">Download</h2>
-
-<p>Binary executables (stable version 2.5):
-</p><ul>
-  </li><li> <a href="http://bnfc.digitalgrammars.com/download/bnfc-2.5-linux.gz"> Linux binary </a>
-  </li><li> <a
-  href="http://bnfc.digitalgrammars.com/download/bnfc-2.5-mac.gz"> Mac OS X binary </a>
-  </li><li> <a href="http://bnfc.digitalgrammars.com/download/bnfc-2.5-windows.exe">Windows binary </a>
-</li></ul>
-<p></p>
-<p>Source package (stable version 2.5):
-</p><ul>
-  <li> <a
-  href="http://bnfc.digitalgrammars.com/download/bnfc-2.5src.tgz">source package 2.5</a>
-</li></ul>
-<p></p>
-
-
-<p>Current development code: Source repository at GitHub (<a href="https://github.com/BNFC/bnfc">https://github.com/BNFC/bnfc</a>):
-
-<blockquote><code>git clone https://github.org/BNFC/bnfc
-</code></blockquote>
-
-
-
-
-
-<p>Install by Cabal from Hackage:
-
-</p><blockquote><code>cabal install bnfc</code></blockquote>
-
-
-
-
 <h2>Large examples</h2>
 
 <p>A <a href="http://bnfc.digitalgrammars.com/doc/examples/C.cf">grammar of C</a>. An <a href="http://bnfc.digitalgrammars.com/doc/examples/runtime.c">example C file</a> parsable in type <tt>Program</tt>.
@@ -212,15 +214,9 @@ A <a href="http://people.cs.uchicago.edu/~mrainey/java.cf">grammar
 of Java 1.1</a> developed by <a href="http://people.cs.uchicago.edu/~mrainey/">Mike Rainey</a> </p>
 
 
-<h2>Contact</h2>
+<h2>Authors</h2>
 
-<h3>Mailing list</h3>
-
-Send questions, bug reports, usage news, etc, to our <a href="https://groups.google.com/group/bnfc-dev?hl=en">Google group</a>.
-
-<h3>Authors</h3>
-
-(c)
+©
     Jonas Almström Duregård, Krasimir Angelov, Jean-Philippe Bernardy, Björn Bringert, Johan Broberg, Paul Callaghan,
     Grégoire Détrez, Markus Forsberg, Ola Frid, Peter Gammie, Thomas Hallgren, Patrik Jansson,
     Kristofer Johannisson, Antti-Juhani Kaijanaho, Ulf Norell,
@@ -230,6 +226,14 @@ Send questions, bug reports, usage news, etc, to our <a href="https://groups.goo
 
 Free software under GNU General Public License (<a href="http://bnfc.digitalgrammars.com/LICENSE">GPL</a>).
 
-
 </div>
+
+<script src="jquery-1.9.1.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script>
+  $('#downloadTab a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  })
+</script>
 </body></html>

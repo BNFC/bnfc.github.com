@@ -1,0 +1,58 @@
+a.icon {
+  margin-bottom: 1em;
+}
+
+table td { border: none; }
+
+.section {
+  margin-bottom: 3em;
+  margin-top:3em;
+}
+
+
+a.icon::before { margin-right: 5px;
+  vertical-align: -5px;
+}
+a.icon.linux::before { content: url(../linux.png); }
+a.icon.mac::before   { content: url(../mac.png); }
+a.icon.win::before   { content: url(../win.png); }
+a.icon.tar::before   { content: url(../tar.png); }
+
+#download-box {
+  padding: 0 2em 1em;
+  background: #eee8d5;
+}
+#download-box .tab-pane {
+  background: white;
+  border: 1px solid #ddd;
+  border-top-color: transparent;
+  padding: 8%;
+}
+#download-box .nav {
+  margin-bottom: 0;}
+
+div.center { text-align: center; }
+
+.grow {
+  animation-name: grow;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+
+  -webkit-animation-name: grow;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: ease-in-out;
+
+}
+
+@keyframes grow {
+  from,50% { opacity: 0; transform: scale(0.1,0.1); }
+  80% { opacity: 1; transform: scale(1.1,1.1); }
+  to { transform: scale(1.0,1.0); }
+}
+
+@-webkit-keyframes grow {
+  from,50% { opacity: 0; -webkit-transform: scale(0.1,0.1); }
+  80% { opacity: 1; -webkit-transform: scale(1.1,1.1); }
+  to { -webkit-transform: scale(1.0,1.0); }
+}
+
