@@ -13,10 +13,10 @@ table td { border: none; }
 a.icon::before { margin-right: 5px;
   vertical-align: -5px;
 }
-a.icon.linux::before { content: url(../linux.png); }
-a.icon.mac::before   { content: url(../mac.png); }
-a.icon.win::before   { content: url(../win.png); }
-a.icon.tar::before   { content: url(../tar.png); }
+a.icon.linux::before { content: url(../img/linux.png); }
+a.icon.mac::before   { content: url(../img/mac.png); }
+a.icon.win::before   { content: url(../img/win.png); }
+a.icon.tar::before   { content: url(../img/tar.png); }
 
 #download-box {
   padding: 0 2em 1em;
