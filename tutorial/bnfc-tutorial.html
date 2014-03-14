@@ -1,13 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-  <META NAME="generator" CONTENT="http://txt2tags.sf.net">
-  <TITLE>BNF Converter Tutorial</TITLE>
-  <link rel="stylesheet" title="GF" href="bootstrap.min.css">
-</HEAD>
-
-<BODY>
-  <div class="container">
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<TITLE>BNF Converter Tutorial</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
 <P ALIGN="center"><CENTER><H1>BNF Converter Tutorial</H1>
 <FONT SIZE="4">
 <I>Aarne Ranta</I><BR>
@@ -60,9 +56,17 @@ BNFC also scales up to legacy programming languages
 <LI>but some languages have rough corners (e.g. Haskell)
 </UL>
 
+<P>
+<!-- NEW -->
+</P>
 <H2>How to obtain BNFC</H2>
-<p>BNFC homepage: <a href="http://bnfc.digitalgrammars.com/">http://bnfc.digitalgrammars.com/</a></p>
-<p>You can obtain</p>
+<P>
+BNFC homepage: 
+<A HREF="http://digitalgrammars.com/bnfc/"><CODE>digitalgrammars.com/bnfc/</CODE></A>
+</P>
+<P>
+You can obtain
+</P>
 <UL>
 <LI>a Windows binary
 <LI>a Linux (i386) binary
@@ -78,17 +82,32 @@ package system (but it is a slightly older version).
 For the binaries, it is enough to download them and put into a place where you
 can find executables (such as <CODE>/usr/local/bin</CODE> on Unix-like platforms).
 </P>
-
-<h2>Working with BNFC sources</h2>
-<p>If you choose the source package, you need the <a href="http://www.haskell.org/ghc/">GHC Haskell Compiler</a>. With GHC in place, just unpack the sources, <code>cd</code> to <code>BNFC</code>, and type <code>make</code>.</p>
+<P>
+<!-- NEW -->
+</P>
+<H2>Working with BNFC sources</H2>
+<P>
+If you choose the source package, you need the 
+<A HREF="http://www.haskell.org/ghc/">GHC Haskell Compiler</A>. With GHC in place,
+just unpack the sources, <CODE>cd</CODE> to <CODE>BNFC</CODE>, and type <CODE>make</CODE>.
+</P>
 <P>
 If you want to contribute to BNFC (12 persons have!), make sure you use the
 latest Darcs version: give the command
 </P>
-<PRE>git clone https://github.com/BNFC/bnfc.git</PRE>
-
-<P> BNFC is licensed under GPL.  </P>
-
+<PRE>
+    darcs get --partial http://www.cs.chalmers.se/Cs/Research/Language-technology/darcs/BNFC/
+</PRE>
+<P>
+This requires the version control system 
+<A HREF="http://darcs.net">Darcs</A>. Contributions can be sent in email as darcs patches.
+</P>
+<P>
+BNFC is licensed under GPL.
+</P>
+<P>
+<!-- NEW -->
+</P>
 <H2>Calling BNFC</H2>
 <P>
 When you have BNFC in place (i.e. on your path), you can all it by
@@ -566,7 +585,7 @@ predicates, and its objects can be shown as strings.
 </P>
 <P>
 The complete code is in the file
-<A HREF="tutorial/calc/haskell/AbsCalc.hs"><CODE>AbsCalc.hs</CODE></A>.
+<A HREF="calc/haskell/AbsCalc.hs"><CODE>AbsCalc.hs</CODE></A>.
 </P>
 <P>
 <!-- NEW -->
@@ -594,7 +613,7 @@ Here is the tree traversal: pattern matching on the type <CODE>Exp</CODE>.
 </PRE>
 <P>
 The complete code is in the file
-<A HREF="tutorial/calc/haskell/Interpreter.hs"><CODE>Interpreter.hs</CODE></A>.
+<A HREF="calc/haskell/Interpreter.hs"><CODE>Interpreter.hs</CODE></A>.
 </P>
 <P>
 <!-- NEW -->
@@ -605,9 +624,9 @@ We write a module reading string input calling <CODE>Interpreter.interpret</CODE
 </P>
 <P>
 The string is first lexed and parsed. The file 
-<A HREF="tutorial/calc/haskell/Interpret.hs"><CODE>Interpret.hs</CODE></A>.
+<A HREF="calc/haskell/Interpret.hs"><CODE>Interpret.hs</CODE></A>.
 is modified from 
-<A HREF="tutorial/calc/haskell/TestCalc.hs"><CODE>TestCalc.hs</CODE></A>.
+<A HREF="calc/haskell/TestCalc.hs"><CODE>TestCalc.hs</CODE></A>.
 </P>
 <PRE>
     module Main where
@@ -638,7 +657,7 @@ components of the compiler.
 </P>
 <P>
 BNFC gives a template for this, the <B>skeleton</B> file
-<A HREF="tutorial/calc/haskell/SkelCalc.hs"><CODE>SkelCalc.hs</CODE></A>, 
+<A HREF="calc/haskell/SkelCalc.hs"><CODE>SkelCalc.hs</CODE></A>, 
 with a dummy tree processing function:
 </P>
 <PRE>
@@ -674,7 +693,7 @@ Run on command-line input:
     7
 </PRE>
 <P>
-Run on file input (<A HREF="tutorial/calc/ex1.calc"><CODE>ex1.calc</CODE></A>):
+Run on file input (<A HREF="calc/ex1.calc"><CODE>ex1.calc</CODE></A>):
 </P>
 <PRE>
     ./Interpret &lt; ex1.calc
@@ -693,15 +712,17 @@ For each category in the grammar, an abstract base class is generated.
 <P>
 For each constructor of the category, a class extending the base class.
 </P>
-<P>This means quite a few files, put into the subdirectory
-<CODE>Calc/Absyn/</CODE>:</P>
+<P>
+This means quite a few files, put into the subdirectory 
+<A HREF="calc/java/Calc/Absyn/"><CODE>Calc/Absyn/</CODE></A>:
+</P>
 <PRE>
-    <a href="tutorial/calc/java/Calc/Absyn/EAdd.java">Calc/Absyn/EAdd.java</a>
-    <a href="tutorial/calc/java/Calc/Absyn/EDiv.java">Calc/Absyn/EDiv.java</a>
-    <a href="tutorial/calc/java/Calc/Absyn/EInt.java">Calc/Absyn/EInt.java</a>
-    <a href="tutorial/calc/java/Calc/Absyn/EMul.java">Calc/Absyn/EMul.java</a>
-    <a href="tutorial/calc/java/Calc/Absyn/ESub.java">Calc/Absyn/ESub.java</a>
-    <a href="tutorial/calc/java/Calc/Absyn/Exp.java">Calc/Absyn/Exp.java</a>
+    Calc/Absyn/EAdd.java
+    Calc/Absyn/EDiv.java
+    Calc/Absyn/EInt.java
+    Calc/Absyn/EMul.java
+    Calc/Absyn/ESub.java
+    Calc/Absyn/Exp.java
 </PRE>
 <P></P>
 <P>
@@ -821,7 +842,7 @@ and <CODE>Object</CODE> as argument type (a dummy argument):
 <H2>Java code around tree processing</H2>
 <P>
 The complete code is in the file 
-<A HREF="tutorial/calc/java/Calc/Interpreter.java"><CODE>Interpreter.java</CODE></A>:
+<A HREF="calc/java/Calc/Interpreter.java"><CODE>Interpreter.java</CODE></A>:
 </P>
 <PRE>
     package Calc;
@@ -853,7 +874,7 @@ The complete code is in the file
 <H2>Tree processing in Java: the skeleton</H2>
 <P>
 You can use the BNFC-generated file
-<A HREF="tutorial/calc/java/Calc/VisitSkel.java"><CODE>Calc/VisitSkel.java</CODE></A> as a template for
+<A HREF="calc/java/Calc/VisitSkel.java"><CODE>Calc/VisitSkel.java</CODE></A> as a template for
 writing your own visitor applications:
 </P>
 <PRE>
@@ -883,9 +904,9 @@ writing your own visitor applications:
 <H2>An interpreter in Java: main class</H2>
 <P>
 The program 
-<A HREF="tutorial/calc/java/Calc/Interpret.java"><CODE>Interpret.java</CODE></A>
+<A HREF="calc/java/Calc/Interpret.java"><CODE>Interpret.java</CODE></A>
 modifies the BNFC-generated
-<A HREF="tutorial/calc/java/Calc/Test.java"><CODE>Test.java</CODE></A>,
+<A HREF="calc/java/Calc/Test.java"><CODE>Test.java</CODE></A>,
 by changing the tree output
 to a call of the interpreter:
 </P>
@@ -961,8 +982,8 @@ tagged union of structures is created:
 </PRE>
 <P>
 The complete code is in the files
-<A HREF="tutorial/calc/c/Absyn.h"><CODE>Absyn.h</CODE></A> and
-<A HREF="tutorial/calc/c/Absyn.c"><CODE>Absyn.c</CODE></A>.
+<A HREF="calc/c/Absyn.h"><CODE>Absyn.h</CODE></A> and
+<A HREF="calc/c/Absyn.c"><CODE>Absyn.c</CODE></A>.
 </P>
 <P>
 <!-- NEW -->
@@ -992,8 +1013,8 @@ changing the return type and the name of <CODE>visitExp</CODE>:
 </PRE>
 <P>
 The complete code is in the files
-<A HREF="tutorial/calc/c/Interpreter.h"><CODE>Interpreter.h</CODE></A> and
-<A HREF="tutorial/calc/c/Interpreter.c"><CODE>Interpreter.c</CODE></A>.
+<A HREF="calc/c/Interpreter.h"><CODE>Interpreter.h</CODE></A> and
+<A HREF="calc/c/Interpreter.c"><CODE>Interpreter.c</CODE></A>.
 </P>
 <P>
 <!-- NEW -->
@@ -1027,8 +1048,8 @@ case analysis over constructor tags.
 </PRE>
 <P>
 The complete code is in the files
-<A HREF="tutorial/calc/c/Skeleton.h"><CODE>Skeleton.h</CODE></A> and
-<A HREF="tutorial/calc/c/Skeleton.c"><CODE>Skeleton.c</CODE></A>.
+<A HREF="calc/c/Skeleton.h"><CODE>Skeleton.h</CODE></A> and
+<A HREF="calc/c/Skeleton.c"><CODE>Skeleton.c</CODE></A>.
 </P>
 <P>
 <!-- NEW -->
@@ -1060,9 +1081,9 @@ The string is first lexed and parsed.
 </PRE>
 <P>
 The complete code is in the file
-<A HREF="tutorial/calc/c/Interpret.c"><CODE>Interpret.c</CODE></A>,
+<A HREF="calc/c/Interpret.c"><CODE>Interpret.c</CODE></A>,
 modified from the BNFC-generated 
-<A HREF="tutorial/calc/c/Test.c"><CODE>Test.c</CODE></A>.
+<A HREF="calc/c/Test.c"><CODE>Test.c</CODE></A>.
 </P>
 <P>
 <!-- NEW -->
@@ -1314,9 +1335,14 @@ All grammars: conflicts. Use parser diagnosis tools to find and solve them!
 <!-- NEW -->
 </P>
 <H2>Further reading</H2>
-
-<p>BNFC homepage: <a href="http://bnfc.digitalgrammars.com/">http://bnfc.digitalgrammars.com/</a></p>
-<p>The <a href="./LBNF-report.pdf">LBNF report</a>, covering the whole Labelled BNF grammar language used in BNFC:</p>
+<P>
+BNFC homepage: 
+<A HREF="http://digitalgrammars.com/bnfc"><CODE>digitalgrammars.com/bnfc</CODE></A>
+</P>
+<P>
+The LBNF report, covering the whole Labelled BNF grammar language used in BNFC:
+<A HREF="http://digitalgrammars.com/bnfc/doc/LBNF-report.pdf"><CODE>digitalgrammars.com/bnfc/doc/LBNF-report.pdf</CODE></A>
+</P>
 <P>
 Chalmers Programming Languages course notes:
 <A HREF="http://www.cs.chalmers.se/Cs/Grundutb/Kurser/progs/current/"><CODE>www.cs.chalmers.se/Cs/Grundutb/Kurser/progs/current/</CODE></A> 
@@ -1330,5 +1356,6 @@ Dragon book: Aho, Lam, Sethi, Ullman,
 <I>Compilers Principles, Techniques and Tools</I>, 2007.
 </P>
 
-  </div>
+<!-- html code generated by txt2tags 2.4 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -thtml bnfc-tutorial.txt -->
 </BODY></HTML>
