@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+
+if __name__ == "__main__":
+    import argparse, os, fnmatch, re, sys
+    from datetime import date
+    parser = argparse.ArgumentParser(description='Publish release.')
+    parser.add_argument('version', help='Release version')
+    parser.add_argument('-i', '--ignore-missing',
+            action='store_true', help='Ignore missing files')
+    args = parser.parse_args()
+
+    pats = dict(linux32=re.compile('bnfc-%s-linux-i386.(tar.gz|tgz|gz)' % args.version, re.I),
+                linux64=re.compile('bnfc-%s-linux-x86_64.(tar.gz|tgz|gz)' % args.version, re.I),
+                mac=re.compile('bnfc-%s-mac.pkg' % args.version, re.I),
+                win=re.compile('bnfc-%s-win.exe' % args.version, re.I),
+                source=re.compile('bnfc-%s.(tar.gz|tgz)' % args.version, re.I))
+
+    found = dict()
+
+    for file in  os.listdir('download'):
+        for k in pats:
+            if pats[k].match(file):
+                found[k] = file
+
+    if len(set(pats) - set(found)) > 0:
+        print("Missing:",*set(pats) - set(found))
+        sys.exit(1)
+
+    post = "_posts/releases/%s-v%s.md" % (date.today().isoformat(), args.version)
+
+
+    with open(post, 'w') as f:
+        print("---", file=f)
+        print("version:", args.version, file=f)
+        print("categories:", "- releases", sep="\n", file=f)
+        print("packages:", file=f)
+        for k in sorted(found):
+            print("  %s:" % k, found[k], file=f)
+        print("---",file=f)
+
+
