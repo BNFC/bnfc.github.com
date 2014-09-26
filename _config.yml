@@ -4,3 +4,4 @@ urls:
   openhub:     "https://www.openhub.net/p/bnfc"
   hackage:     "https://hackage.haskell.org/package/BNFC"
   readthedocs: "https://bnfc.readthedocs.org/"
+  googlegroup: "https://groups.google.com/forum/#!forum/bnfc-dev"
