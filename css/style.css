@@ -9,14 +9,12 @@ table td { border: none; }
   margin-top:3em;
 }
 
-
-a.icon::before { margin-right: 5px;
-  vertical-align: -5px;
-}
-a.icon.linux::before { content: url(../img/linux.png); }
-a.icon.mac::before   { content: url(../img/mac.png); }
-a.icon.win::before   { content: url(../img/win.png); }
-a.icon.tar::before   { content: url(../img/tar.png); }
+a.icon::before { margin-right: 5px; vertical-align: -5px; }
+.icon-linux64::before,
+.icon-linux32::before { content: url(../img/linux.png); }
+.icon-mac::before   { content: url(../img/mac.png); }
+.icon-win::before   { content: url(../img/win.png); }
+.icon-source::before   { content: url(../img/tar.png); }
 
 #download-box {
   padding: 0 2em 1em;
@@ -30,6 +28,8 @@ a.icon.tar::before   { content: url(../img/tar.png); }
 }
 #download-box .nav {
   margin-bottom: 0;}
+#download-box h4 {
+  margin-top: 0 }
 
 div.center { text-align: center; }
 
@@ -56,3 +56,13 @@ div.center { text-align: center; }
   to { -webkit-transform: scale(1.0,1.0); }
 }
 
+a.openhub-sparkline {
+  margin-top:6px;
+  opacity: 0.4;
+  filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+a.openhub-sparkline:hover {
+  opacity: 1;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}

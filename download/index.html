@@ -1,0 +1,6 @@
+---
+layout: default
+---
+{% for release in site.categories['releases'] %}
+    {% include download-links.html release=release %}
+{% endfor %}

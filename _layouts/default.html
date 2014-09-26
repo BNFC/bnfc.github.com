@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>The BNF Converter</title>
+
+    <link href="{{ site.baseurl }}css/style.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ site.baseurl }}">
+            <span style="font-family: monospace;">
+              <span style="color:#839496">BNFC</span>
+              <span style="color:#859900;">::=</span>
+              <span style="color:#b58900;">BNF</span>
+              <span style="color:#cb4b16;">"Converter"</span>
+            </span>
+        </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-left">
+            <li><a href="{{ site.baseurl }}download/">
+              <span class="glyphicon glyphicon-download-alt"></span> Download
+            </a></li>
+            <li><a href="{{site.urls.readthedocs}}">
+              <span class="glyphicon glyphicon-book"></span> Documentation
+            </a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-link"></span>
+                Links <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ site.urls.hackage }}">Hackage</a></li>
+                <li><a href="{{ site.urls.github }}">Github</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ site.urls.openhub }}">Open HUB</a></li>
+              </ul>
+            </li>
+          </ul>
+          <a href="{{site.urls.openhub}}" title="Open HUB analytics"
+             class="navbar-right hidden-sm hidden-xs openhub-sparkline">
+            <img alt="Commits_spark" height="32" width="179"
+                 src="https://www.openhub.net/p/bnfc/analyses/latest/commits_spark.png" />
+          </a>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+      {{ content }}
+    </div> <!-- /container -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+

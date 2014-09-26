@@ -1,100 +1,74 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>The BNF Converter</title>
-    <link rel="stylesheet" title="GF" href="css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-</head>
+---
+layout: default
+---
+<div class="center section header">
+  <p><img class="grow" width="300" src="bnfc-logo.png">
+  <p><a href="http://www.clt.gu.se/">Centre for Language Technology</a> 
+  <p> Chalmers University of Technology and University of Gothenburg
+</div>
 
-
-<body>
-
-<div class="container">
-  <div class="center section header">
-    <img class="grow" width="300" src="bnfc-logo.png">
-    <p>Version 2.5, March 2013
-    <p><a href="http://www.clt.gu.se/">Centre for Language Technology</a> 
-    <p> Chalmers University of Technology and University of Gothenburg
+<div class="row section">
+  <div class="col-md-6">
+    <h2>What is the BNF Converter?</h2>
+    <p>The BNF Converter is a compiler construction tool generating a compiler
+    front-end from a <b>Labelled BNF grammar</b>. It is currently able to
+    generate C, C++, C#, Haskell, Java, and OCaml, as well as XML
+    representations.</p>
+    <p>Given a <b>Labelled BNF grammar</b> the tool produces:</p>
+    <ul>
+      <li>an abstract syntax implementation</li>
+      <li>a case skeleton for the abstract syntax in the same language</li>
+      <li>an <a href="http://www.haskell.org/alex">Alex</a>,
+      <a href="http://www.cs.princeton.edu/~appel/modern/java/JLex/">JLex</a>,
+      or <a href="http://flex.sourceforge.net/">Flex</a> lexer generator file </li>
+      <li> a <a href="http://www.haskell.org/happy">Happy</a>,
+      <a href="http://www2.cs.tum.edu/projects/cup/">CUP</a>,
+      or <a href="http://www.gnu.org/software/bison/bison.html">Bison</a>
+      parser generator file</li>
+      <li> a pretty-printer as a Haskell/Java/C++/C module </li>
+      <li> a Latex file containing a readable specification of the
+      language </li>
+    </ul>
   </div>
 
-
-  <div class="row section">
-
-    <div class="span6">
-      <h2>What is the BNF Converter?</h2>
-      <p>The BNF Converter is a compiler construction tool generating a
-          compiler front-end
-          from a <b>Labelled BNF grammar</b>. It is currently able to generate
-          C, C++, C#, Haskell, Java, and OCaml, as well as XML representations.
-      </p>
-      <p> Given a <b>Labelled BNF grammar</b> the tool produces: </p>
-      <ul>
-        <li>an abstract syntax implementation</li>
-        <li>a case skeleton for the abstract syntax in the same language</li>
-        <li>an <a href="http://www.haskell.org/alex"> Alex</a>,
-        <a href="http://www.cs.princeton.edu/~appel/modern/java/JLex/">JLex</a>,
-        or <a href="http://flex.sourceforge.net/">Flex</a> lexer generator file </li>
-        <li> a <a href="http://www.haskell.org/happy">Happy</a>,
-        <a href="http://www2.cs.tum.edu/projects/cup/">CUP</a>,
-        or <a href="http://www.gnu.org/software/bison/bison.html">Bison</a>
-        parser generator file</li>
-        <li> a pretty-printer as a Haskell/Java/C++/C module </li>
-        <li> a Latex file containing a readable specification of the
-        language </li>
-      </ul>
-    </div>
-
-
-    <div id="download-box" class="span5">
+  <div id="download-box" class="col-md-6">
       <h2>Download</h2>
-
-      <ul class="nav nav-tabs" id="downloadTab">
-        <li class="active"><a href="#packages">Packages</a></li>
-        <li><a href="#cabal">Cabal</a></li>
-        <li><a href="#git">git</a></li>
+      {% for release in site.categories['releases'] limit:1 %}
+      <ul class="nav nav-tabs" role="tablist" id="downloadTab">
+        <li class="active"><a href="#packages" data-toggle="tab">Packages</a></li>
+        <li><a href="#cabal" data-toggle="tab">Cabal</a></li>
+        <li><a href="#git" data-toggle="tab">git</a></li>
       </ul>
-           
       <div class="tab-content">
         <div class="tab-pane active" id="packages">
-          <style>
-
-          </style>
-          <div class="row">
-            <span class="span2 "><a class="btn btn-block icon linux" href="./download/bnfc-2.5.0-linux-i386.gz">Linux (32 bits)</a></span>
-            <span class="span2 "><a class="btn btn-block icon linux" href="./download/bnfc-2.5.0-linux-amd64.gz">Linux (64 bits)</a></span>
-            <span class="span2 "><a class="btn btn-block icon mac" href="./download/bnfc-2.5.0-mac.gz">Mac</a></span>
-            <span class="span2 "><a class="btn btn-block icon win" href="./download/bnfc-2.5.0-win.exe">Windows</a></span>
-            <span class="span2 "><a class="btn btn-block icon tar" href="./download/bnfc-2.5.0-src.tar.gz">Sources</a></span>
-          </div>
+          {% include download-links.html release=release %}
         </div>
         <div class="tab-pane" id="cabal">
           <p>Install by Cabal from Hackage:
           <pre>$ cabal install bnfc</pre>
-        
+
         </div>
         <div class="tab-pane" id="git">
           <p>Current development code (Source repository on <a href="https://github.com/BNFC/bnfc">GitHub</a>)
           <pre>$ git clone https://github.com/BNFC/bnfc</pre>
         </div>
       </div>
-                   
-    </div> 
-  </div> 
+      {% endfor %}
+    </div>
+  </div>
 
   <!-- Here starts the three columns row containing new, resources and book-->
   <div class="row section">
-    <div class="span3">
+    <div class="col-md-3">
     <h2>News</h2>
     <ul>
+      <li>2014-09-23: <a href="http://bnfc.digitalgrammars.com/download/bnfc-2.7.0.0-src.tar.gz">BNFC 2.7.0.0</a> released.
       <li>2013-03-01: <a href="http://bnfc.digitalgrammars.com/download/bnfc-2.5.0-src.tar.gz">BNFC 2.5</a> released.
       <li>2012-07-13: <a href="http://www.digitalgrammars.com/ipl-book/">Implementing Programming Languages</a>, a compiler book using BNFC.</li>
     </ul>
   </div>
 
-  <div class="span3 offset1">
+  <div class="col-md-3 col-md-offset-1">
     <h2>Resources</h2>
     <h3>Documentation</h3>
     <ul>
@@ -106,7 +80,7 @@
     <h3>Mailing list</h3>
     <p>Send questions, bug reports, usage news, etc, to our <a href="https://groups.google.com/group/bnfc-dev?hl=en">Google group</a>.
   </div>
-  <div class="span3 offset1">
+  <div class="col-md-3 col-md-offset-1">
     <h2>Book</h2>
     <div class="center">
       <img style="max-width:60%" alt="Book cover" src="img/ipl-cover.png" />
@@ -119,7 +93,7 @@
 <h2>A small example</h2>
 
 <div class="row">
-<div class="span4">
+<div class="col-md-4">
        <table border="0">
 <tr>
 <td style="color:#586e75" colspan="2">-- file Calc.bnfc</td>
@@ -181,7 +155,7 @@
 </tr>
 </table>
 </div>
-<div class="span4">
+<div class="col-md-4">
      </td>
      <td>
        <pre>
@@ -194,7 +168,7 @@ bnfc -java    Calc.bnfc
 bnfc -ocaml   Calc.bnfc
    </pre>
 </div>
-<div class="span4">
+<div class="col-md-4">
        <img width="200" src="bnfc.png">
 </div>
 </div>
@@ -225,15 +199,3 @@ of Java 1.1</a> developed by <a href="http://people.cs.uchicago.edu/~mrainey/">M
 <h2>License</h2>
 
 Free software under GNU General Public License (<a href="https://www.gnu.org/licenses/gpl-2.0.html">GPL</a>).
-
-</div>
-
-<script src="jquery-1.9.1.min.js"></script>
-<script src="bootstrap.min.js"></script>
-<script>
-  $('#downloadTab a').click(function (e) {
-    e.preventDefault();
-    $(this).tab('show');
-  })
-</script>
-</body></html>
