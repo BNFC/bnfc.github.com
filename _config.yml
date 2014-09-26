@@ -1,3 +1,4 @@
+baseurl: "/"
 urls:
   github:      "https://github.com/bnfc/bnfc"
   openhub:     "https://www.openhub.net/p/bnfc"
