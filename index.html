@@ -61,11 +61,16 @@ layout: default
   <div class="row section">
     <div class="col-md-3">
     <h2>News</h2>
-    <ul>
-      <li>2014-09-23: <a href="/download/BNFC-2.7.0.1.tar.gz">BNFC 2.7.0.0</a> released. See the <a href="http://bnfc.readthedocs.org/en/latest/changes.html#bnfc-2-7-0-0">release notes</a>
-      <li>2013-03-01: <a href="/download/bnfc-2.5.0-src.tar.gz">BNFC 2.5</a> released.
-      <li>2012-07-13: <a href="http://www.digitalgrammars.com/ipl-book/">Implementing Programming Languages</a>, a compiler book using BNFC.</li>
-    </ul>
+    {% for news in site.posts limit:10 %}
+    <p>
+      {% if news.version %}
+      <a href="{{ news.url }}"><strong>BNFC release {{ news.version }}</strong></a>
+      {% elsif news.title %}
+        <a href="{{news.link}}"><strong>{{ news.title }}</strong></a>
+      {% endif %}
+      <span class="text-right text-muted">{{news.date | date: "%Y-%m-%d" }}</span>
+    <hr/>
+    {% endfor %}
   </div>
 
   <div class="col-md-3 col-md-offset-1">
