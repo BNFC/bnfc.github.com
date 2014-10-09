@@ -1,0 +1,12 @@
+---
+layout: default
+---
+{% if page.version %}
+    <h2>BNFC {{ page.version }}</h2>
+    {{content}}
+    {% include download-links.html release=page %}
+{% elsif news.title %}
+    <h2>{{ news.title }}</h2>
+    {{content}}
+{% endif %}
+
