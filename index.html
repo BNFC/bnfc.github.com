@@ -33,16 +33,14 @@ layout: default
 
   <div id="download-box" class="col-md-6">
       <h2>Download</h2>
-      {% for release in site.categories['releases'] limit:1 %}
       <ul class="nav nav-tabs" role="tablist" id="downloadTab">
-        <li class="active"><a href="#packages" data-toggle="tab">Packages</a></li>
+        <li class="active"><a href="#packages" data-toggle="tab">Binaries</a></li>
         <li><a href="#cabal" data-toggle="tab">Cabal</a></li>
         <li><a href="#git" data-toggle="tab">git</a></li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane active" id="packages">
-          <h4>BNFC {{release.version}}</h4>
-          {% include download-links.html release=release %}
+        <div class="tab-pane active text-center" id="packages">
+          <a href="{{ site.urls.download }}" class="btn btn-primary btn-lg">Download (linux, mac, windows)</a>
         </div>
         <div class="tab-pane" id="cabal">
           <p>Install by Cabal from Hackage:
@@ -54,7 +52,6 @@ layout: default
           <pre>$ git clone https://github.com/BNFC/bnfc</pre>
         </div>
       </div>
-      {% endfor %}
     </div>
   </div>
 
