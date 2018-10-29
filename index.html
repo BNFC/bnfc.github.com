@@ -2,205 +2,186 @@
 layout: default
 ---
 <div class="center section header">
-  <p><img class="grow" width="300" src="bnfc-logo.png">
-  <p><a href="http://www.clt.gu.se/">Centre for Language Technology</a> 
-  <p> Chalmers University of Technology and University of Gothenburg
+  <p><img class="grow" width="300" src="img/bnfc-logo.png" alt="BNFC logo" /></p>
+  <p><a href="http://www.clt.gu.se/">Centre for Language Technology</a></p>
+  <p>Chalmers University of Technology and University of Gothenburg</p>
 </div>
-
 <div class="row section">
   <div class="col-md-6">
     <h2>What is the BNF Converter?</h2>
     <p>The BNF Converter is a compiler construction tool generating a compiler
-    front-end from a <b>Labelled BNF grammar</b>. It is currently able to
-    generate C, C++, C#, Haskell, Java, and OCaml, as well as XML
-    representations.</p>
+      front-end from a <b>Labelled BNF grammar</b>. It is currently able to
+      generate C, C++, C#, Haskell, Java, and OCaml, as well as XML
+      representations.
+    </p>
     <p>Given a <b>Labelled BNF grammar</b> the tool produces:</p>
     <ul>
       <li>an abstract syntax implementation</li>
       <li>a case skeleton for the abstract syntax in the same language</li>
       <li>an <a href="http://www.haskell.org/alex">Alex</a>,
-      <a href="http://www.cs.princeton.edu/~appel/modern/java/JLex/">JLex</a>,
-      or <a href="http://flex.sourceforge.net/">Flex</a> lexer generator file </li>
-      <li> a <a href="http://www.haskell.org/happy">Happy</a>,
-      <a href="http://www2.cs.tum.edu/projects/cup/">CUP</a>,
-      or <a href="http://www.gnu.org/software/bison/bison.html">Bison</a>
-      parser generator file</li>
-      <li> a pretty-printer as a Haskell/Java/C++/C module </li>
-      <li> a Latex file containing a readable specification of the
-      language </li>
+        <a href="http://www.cs.princeton.edu/~appel/modern/java/JLex/">JLex</a>,
+        or <a href="http://flex.sourceforge.net/">Flex</a> lexer generator file </li>
+      <li>a <a href="http://www.haskell.org/happy">Happy</a>,
+        <a href="http://www2.cs.tum.edu/projects/cup/">CUP</a>,
+        or <a href="http://www.gnu.org/software/bison/bison.html">Bison</a>
+        parser generator file</li>
+      <li>a pretty-printer as a Haskell/Java/C++/C module </li>
+      <li>a Latex file containing a readable specification of the
+        language </li>
     </ul>
   </div>
-
   <div id="download-box" class="col-md-6">
-      <h2>Download</h2>
-      <ul class="nav nav-tabs" role="tablist" id="downloadTab">
-        <li class="active"><a href="#packages" data-toggle="tab">Binaries</a></li>
-        <li><a href="#cabal" data-toggle="tab">Cabal</a></li>
-        <li><a href="#git" data-toggle="tab">git</a></li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active text-center" id="packages">
-          <a href="{{ site.urls.download }}" class="btn btn-primary btn-lg">Download (linux, mac, windows)</a>
-        </div>
-        <div class="tab-pane" id="cabal">
-          <p>Install by Cabal from Hackage:
-          <pre>$ cabal install bnfc</pre>
-
-        </div>
-        <div class="tab-pane" id="git">
-          <p>Current development code (Source repository on <a href="https://github.com/BNFC/bnfc">GitHub</a>)
-          <pre>$ git clone https://github.com/BNFC/bnfc</pre>
-        </div>
+    <h2>Download</h2>
+    <ul class="nav nav-tabs" role="tablist" id="downloadTab">
+      <li class="active"><a href="#packages" data-toggle="tab">Binaries and sources</a></li>
+      <li><a href="#cabal" data-toggle="tab">Cabal</a></li>
+      <li><a href="#git" data-toggle="tab">git</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active text-center" id="packages">
+        <a href="{{ site.urls.download }}" class="btn btn-primary btn-lg">Download (linux, mac, windows)</a>
+      </div>
+      <div class="tab-pane" id="cabal">
+        <p>Install by Cabal from Hackage:</p>
+        <pre>$ cabal install bnfc</pre>
+      </div>
+      <div class="tab-pane" id="git">
+        <p>Current development code (Source repository on <a href="https://github.com/BNFC/bnfc">GitHub</a>)</p>
+        <pre>$ git clone https://github.com/BNFC/bnfc</pre>
       </div>
     </div>
   </div>
-
-  <!-- Here starts the three columns row containing new, resources and book-->
-  <div class="row section">
-    <div class="col-md-3">
+</div>
+<!-- Here starts the three columns row containing new, resources and book-->
+<div class="row section">
+  <div class="col-md-3">
     <h2>News</h2>
     {% for news in site.posts limit:10 %}
-    <p>
-      {% if news.version %}
-      <a href="{{ news.url }}"><strong>BNFC release {{ news.version }}</strong></a>
-      {% elsif news.title %}
-        <a href="{{news.link}}"><strong>{{ news.title }}</strong></a>
-      {% endif %}
-      <span class="text-right text-muted">{{news.date | date: "%Y-%m-%d" }}</span>
-    <hr/>
+    {% if news.version %}
+    <a href="{{ news.url }}"><strong>BNFC release {{ news.version }}</strong></a>
+    {% elsif news.title %}
+    <a href="{{news.link}}"><strong>{{ news.title }}</strong></a>
+    {% endif %}
+    <span class="text-right text-muted">{{news.date | date: "%Y-%m-%d" }}</span>
+    <hr />
     {% endfor %}
   </div>
-
   <div class="col-md-3 col-md-offset-1">
     <h2>Resources</h2>
     <h3>Documentation</h3>
     <ul>
-      <li><a href="./tutorial.html">Tutorial</a> </li>
-      <li><a href="./LBNF-report.pdf">Reference Manual</a>
-      <li><a href="http://www.digitalgrammars.com/ipl-book/">IPL book</a>
+      <li><a href="tutorial/bnfc-tutorial.html">Tutorial</a> (<a target="_blank" href="https://github.com/BNFC/bnfc.github.com/tree/master/tutorial">Files</a>)</li>
+      <li><a href="LBNF-report.pdf">Reference Manual</a>
+      <li><a href="http://www.grammaticalframework.org/ipl-book/">IPL book</a>
     </ul>
-
     <h3>Mailing list</h3>
     <p>Send questions, bug reports, usage news, etc, to our
-       <a href="{{site.urls.googlegroup}}">Google group</a>.
+      <a href="{{site.urls.googlegroup}}">Google group</a>.
+    </p>
   </div>
   <div class="col-md-3 col-md-offset-1">
     <h2>Book</h2>
     <div class="center">
       <img style="max-width:60%" alt="Book cover" src="img/ipl-cover.png" />
-      <p><a href="http://www.digitalgrammars.com/ipl-book/">Implementing Programming Languages</a>, a compiler book using BNFC.
+      <p><a href="http://www.grammaticalframework.org/ipl-book/">Implementing Programming Languages</a>, a compiler book using BNFC.</p>
     </div>
   </div>
 </div>
-
-
 <h2>A small example</h2>
-
 <div class="row">
-<div class="col-md-4">
-       <table border="0">
-<tr>
-<td style="color:#586e75" colspan="2">-- file Calc.bnfc</td>
-</tr>
-<tr>
-<td style="color:#586e75">EAdd.</td>
-<td style="color:#b58900">Exp</td>
-<td style="color:#859900">::=</td>
-<td style="color:#b58900">Exp</td>
-<td style="color:#cb4b16">&quot;+&quot;</td>
-<td style="color:#b58900">Exp1</td>
-<td>;</td>
-</tr>
-<tr>
-<td style="color:#586e75">ESub.</td>
-<td style="color:#b58900">Exp</td>
-<td style="color:#859900">::=</td>
-<td style="color:#b58900">Exp</td>
-<td style="color:#cb4b16">&quot;-&quot;</td>
-<td style="color:#b58900">Exp1</td>
-<td>;</td>
-</tr>
-<tr>
-<td style="color:#586e75">EMul.</td>
-<td style="color:#b58900">Exp1</td>
-<td style="color:#859900">::=</td>
-<td style="color:#b58900">Exp1</td>
-<td style="color:#cb4b16">&quot;*&quot;</td>
-<td style="color:#b58900">Exp2</td>
-<td>;</td>
-</tr>
-<tr>
-<td style="color:#586e75">EDiv.</td>
-<td style="color:#b58900">Exp1</td>
-<td style="color:#859900">::=</td>
-<td style="color:#b58900">Exp1</td>
-<td style="color:#cb4b16">&quot;/&quot;</td>
-<td style="color:#b58900">Exp2</td>
-<td>;</td>
-</tr>
-<tr>
-<td style="color:#586e75">EInt.</td>
-<td style="color:#b58900">Exp2</td>
-<td style="color:#859900">::=</td>
-<td style="color:#b58900">Integer</td>
-<td>;</td>
-</tr>
-<tr>
-</tr>
-<tr>
-<td>coercions</td>
-<td style="color:#b58900">Exp</td>
-<td>2</td>
-<td>;</td>
-</tr>
-<tr>
-</tr>
-<tr>
-</tr>
-</table>
-</div>
-<div class="col-md-4">
-     </td>
-     <td>
-       <pre>
-
+  <div class="col-md-4">
+    <table style="border: none;">
+      <tr>
+        <td style="color:#586e75" colspan="7">-- file Calc.bnfc</td>
+      </tr>
+      <tr>
+        <td style="color:#586e75">EAdd.</td>
+        <td style="color:#b58900">Exp</td>
+        <td style="color:#859900">::=</td>
+        <td style="color:#b58900">Exp</td>
+        <td style="color:#cb4b16">&quot;+&quot;</td>
+        <td style="color:#b58900">Exp1</td>
+        <td>;</td>
+      </tr>
+      <tr>
+        <td style="color:#586e75">ESub.</td>
+        <td style="color:#b58900">Exp</td>
+        <td style="color:#859900">::=</td>
+        <td style="color:#b58900">Exp</td>
+        <td style="color:#cb4b16">&quot;-&quot;</td>
+        <td style="color:#b58900">Exp1</td>
+        <td>;</td>
+      </tr>
+      <tr>
+        <td style="color:#586e75">EMul.</td>
+        <td style="color:#b58900">Exp1</td>
+        <td style="color:#859900">::=</td>
+        <td style="color:#b58900">Exp1</td>
+        <td style="color:#cb4b16">&quot;*&quot;</td>
+        <td style="color:#b58900">Exp2</td>
+        <td>;</td>
+      </tr>
+      <tr>
+        <td style="color:#586e75">EDiv.</td>
+        <td style="color:#b58900">Exp1</td>
+        <td style="color:#859900">::=</td>
+        <td style="color:#b58900">Exp1</td>
+        <td style="color:#cb4b16">&quot;/&quot;</td>
+        <td style="color:#b58900">Exp2</td>
+        <td>;</td>
+      </tr>
+      <tr>
+        <td style="color:#586e75">EInt.</td>
+        <td style="color:#b58900">Exp2</td>
+        <td style="color:#859900">::=</td>
+        <td style="color:#b58900">Integer</td>
+        <td colspan="3">;</td>
+      </tr>
+      <tr>
+        <td>coercions</td>
+        <td style="color:#b58900">Exp</td>
+        <td>2</td>
+        <td colspan="4">;</td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-4">
+    <pre>
 bnfc -haskell Calc.bnfc
 bnfc -c       Calc.bnfc
 bnfc -cpp     Calc.bnfc
 bnfc -csharp  Calc.bnfc
 bnfc -java    Calc.bnfc
 bnfc -ocaml   Calc.bnfc
-   </pre>
+    </pre>
+  </div>
+  <div class="col-md-4">
+    <img width="200" src="img/bnfc.png" alt="BNFC code generator graph" />
+  </div>
 </div>
-<div class="col-md-4">
-       <img width="200" src="bnfc.png">
-</div>
-</div>
-
 <h2>Large examples</h2>
-
-<p>A <a href="https://github.com/BNFC/bnfc/blob/master/examples/C/C.cf">grammar of C</a>.
-   An <a href="https://github.com/BNFC/bnfc/blob/master/examples/C/runtime.c">example C file</a> parsable in type <tt>Program</tt>.
+<p>
+  A <a href="https://github.com/BNFC/bnfc/blob/master/examples/C/C.cf">grammar of C</a>.
+  An <a href="https://github.com/BNFC/bnfc/blob/master/examples/C/runtime.c">example C file</a> parsable in type <code>Program</code>.
 </p>
-<p>A <a href="https://github.com/BNFC/bnfc/blob/master/examples/Alfa/Alfa.cf">grammar of Alfa</a>
-(For more details, see the <a href="http://www.cse.chalmers.se/~hallgren/Alfa/">Alfa home page</a>.)
+<p>
+  A <a href="https://github.com/BNFC/bnfc/blob/master/examples/Alfa/Alfa.cf">grammar of Alfa</a>
+  (For more details, see the <a href="http://www.cse.chalmers.se/~hallgren/Alfa/">Alfa home page</a>.)
 </p>
-<p>A <a href="https://github.com/BNFC/bnfc/blob/master/examples/LBNF/LBNF.cf">grammar of LBNF</a>. It is at the
-same
-time an example LBNF file, parsable in type <tt>Grammar</tt>. This
-grammar is used in the implementation of the BNF Converter.<br>
-<br>
-A <a href="http://people.cs.uchicago.edu/~mrainey/java.cf">grammar
-of Java 1.1</a> developed by <a href="http://people.cs.uchicago.edu/~mrainey/">Mike Rainey</a> </p>
-
-
+<p>
+  A <a href="https://github.com/BNFC/bnfc/blob/master/examples/LBNF/LBNF.cf">grammar of LBNF</a>. It is at the
+  same
+  time an example LBNF file, parsable in type <code>Grammar</code>. This
+  grammar is used in the implementation of the BNF Converter.<br>
+  <br>
+  A <a href="http://people.cs.uchicago.edu/~mrainey/java.cf">grammar
+of Java 1.1</a> developed by <a href="http://people.cs.uchicago.edu/~mrainey/">Mike Rainey</a>
+</p>
 <h2>Authors</h2>
-
-    © Jonas Almström Duregård, Krasimir Angelov, Jean-Philippe Bernardy, Björn Bringert, Johan Broberg, Paul Callaghan,
-    Grégoire Détrez, Markus Forsberg, Ola Frid, Peter Gammie, Thomas Hallgren, Patrik Jansson,
-    Kristofer Johannisson, Antti-Juhani Kaijanaho, Ulf Norell,
-    Michael Pellauer and Aarne Ranta 2002 - 2013.
-
+© Jonas Almström Duregård, Krasimir Angelov, Jean-Philippe Bernardy, Björn Bringert, Johan Broberg, Paul Callaghan,
+Grégoire Détrez, Markus Forsberg, Ola Frid, Peter Gammie, Thomas Hallgren, Patrik Jansson,
+Kristofer Johannisson, Antti-Juhani Kaijanaho, Ulf Norell,
+Michael Pellauer and Aarne Ranta 2002 - 2013.
 <h2>License</h2>
-
-Free software under GNU General Public License (<a href="https://www.gnu.org/licenses/gpl-2.0.html">GPL</a>).
+Free software under GNU General Public License (<a href="https://www.gnu.org/licenses/gpl-2.0.html">GPL</a>).<br />
+<br />

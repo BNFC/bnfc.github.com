@@ -2,8 +2,10 @@
   {% for pkg in include.release.packages %}
   <tr>
     <th><span class="icon icon-{{pkg[0]}}"></span> {{ pkg[0] | capitalize }}</th>
-    <td><a  href="{{site.baseurl}}download/{{ pkg[1] }}" class="btn btn-primary">
-        <span class="glyphicon glyphicon-download-alt"></span> {{ pkg[1] }}</a></td>
+    <td>
+        <a href="{{site.baseurl}}download/{{ pkg[1] }}" class="btn btn-primary">
+        <span class="glyphicon glyphicon-download-alt"></span> {{ pkg[1] }}</a>
+    </td>
   </tr>
   {% endfor %}
 </table>

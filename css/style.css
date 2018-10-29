@@ -2,67 +2,110 @@ a.icon {
   margin-bottom: 1em;
 }
 
-table td { border: none; }
+table td {
+  border: none;
+}
 
 .section {
   margin-bottom: 3em;
-  margin-top:3em;
+  margin-top: 3em;
 }
 
-a.icon::before { margin-right: 5px; vertical-align: -5px; }
+a.icon::before {
+  margin-right: 5px;
+  vertical-align: -5px;
+}
+
 .icon-linux64::before,
-.icon-linux32::before { content: url(../img/linux.png); }
-.icon-mac::before   { content: url(../img/mac.png); }
-.icon-win::before   { content: url(../img/win.png); }
-.icon-source::before   { content: url(../img/tar.png); }
+.icon-linux32::before {
+  content: url(../img/linux.png);
+}
+
+.icon-mac::before {
+  content: url(../img/mac.png);
+}
+
+.icon-win::before {
+  content: url(../img/win.png);
+}
+
+.icon-source::before {
+  content: url(../img/tar.png);
+}
 
 #download-box {
   padding: 0 2em 1em;
   background: #eee8d5;
 }
+
 #download-box .tab-pane {
   background: white;
   border: 1px solid #ddd;
   border-top-color: transparent;
   padding: 8%;
 }
-#download-box .nav {
-  margin-bottom: 0;}
-#download-box h4 {
-  margin-top: 0 }
 
-div.center { text-align: center; }
+#download-box .nav {
+  margin-bottom: 0;
+}
+
+#download-box h4 {
+  margin-top: 0
+}
+
+div.center {
+  text-align: center;
+}
 
 .grow {
   animation-name: grow;
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
-
   -webkit-animation-name: grow;
   -webkit-animation-duration: 2s;
   -webkit-animation-timing-function: ease-in-out;
-
 }
 
 @keyframes grow {
-  from,50% { opacity: 0; transform: scale(0.1,0.1); }
-  80% { opacity: 1; transform: scale(1.1,1.1); }
-  to { transform: scale(1.0,1.0); }
+  from,
+  50% {
+    opacity: 0;
+    transform: scale(0.1, 0.1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.1, 1.1);
+  }
+  to {
+    transform: scale(1.0, 1.0);
+  }
 }
 
 @-webkit-keyframes grow {
-  from,50% { opacity: 0; -webkit-transform: scale(0.1,0.1); }
-  80% { opacity: 1; -webkit-transform: scale(1.1,1.1); }
-  to { -webkit-transform: scale(1.0,1.0); }
+  from,
+  50% {
+    opacity: 0;
+    -webkit-transform: scale(0.1, 0.1);
+  }
+  80% {
+    opacity: 1;
+    -webkit-transform: scale(1.1, 1.1);
+  }
+  to {
+    -webkit-transform: scale(1.0, 1.0);
+  }
 }
 
 a.openhub-sparkline {
-  margin-top:6px;
+  margin-top: 6px;
   opacity: 0.4;
-  filter: alpha(opacity=40); /* For IE8 and earlier */
+  filter: alpha(opacity=40);
+  /* For IE8 and earlier */
 }
 
 a.openhub-sparkline:hover {
   opacity: 1;
-  filter: alpha(opacity=100); /* For IE8 and earlier */
+  filter: alpha(opacity=100);
+  /* For IE8 and earlier */
 }
+
