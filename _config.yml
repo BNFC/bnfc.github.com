@@ -5,4 +5,4 @@ urls:
   hackage:     "https://hackage.haskell.org/package/BNFC"
   readthedocs: "https://bnfc.readthedocs.org/"
   googlegroup: "https://groups.google.com/forum/#!forum/bnfc-dev"
-  download:    "download"
+  download:    "/download"
