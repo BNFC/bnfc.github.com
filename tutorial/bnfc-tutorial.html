@@ -100,7 +100,7 @@ git clone https://github.com/BNFC/bnfc.git
     EMul. Exp1 ::= Exp1 "*" Exp2 ;
     EDiv. Exp1 ::= Exp1 "/" Exp2 ;
     EInt. Exp2 ::= Integer ;
-  
+
     coercions Exp 2 ;
 </pre>
     <p>Copy this code into a file called <code>Calc.cf</code>.</p>
@@ -117,11 +117,11 @@ git clone https://github.com/BNFC/bnfc.git
 </pre>
     <p>If everything goes fine, this will create a parser test class, which you can try out in the following way:</p>
     <pre>
-    echo "23 + 4 * 70" | java Calc/Test 
-  
+    echo "23 + 4 * 70" | java Calc/Test
+
     Parse Succesful!
     [Abstract Syntax]
-    (EAdd (EInt 23) (EMul (EInt 4) (EInt 70))) 
+    (EAdd (EInt 23) (EMul (EInt 4) (EInt 70)))
     [Linearized Tree]
     23 + 4 * 70
 </pre>
@@ -174,8 +174,8 @@ git clone https://github.com/BNFC/bnfc.git
 </pre>
     <p>If everything goes fine, this will create a parser test executable, which you can try out in the following way:</p>
     <pre>
-    echo "23 + 4 * 70" | ./TestCalc 
-  
+    echo "23 + 4 * 70" | ./TestCalc
+
     Parse Successful!
     [Abstract Syntax]
     EAdd (EInt 23) (EMul (EInt 4) (EInt 70))
@@ -200,8 +200,8 @@ git clone https://github.com/BNFC/bnfc.git
 </pre>
     <p>If everything goes fine, this will create a parser test executable, which you can try out in the following way:</p>
     <pre>
-    echo "23 + 4 * 70" | ./testCalc 
-  
+    echo "23 + 4 * 70" | ./testCalc
+
     Parse Successful!
     [Abstract Syntax]
     EAdd (EInt 23) (EMul (EInt 4) (EInt 70))
@@ -372,9 +372,9 @@ git clone https://github.com/BNFC/bnfc.git
       <p>Here is the tree traversal: pattern matching on the type <code>Exp</code>.</p>
       <pre>
     module Interpreter where
-  
+
     import AbsCalc
-  
+
     interpret :: Exp -&gt; Integer
     interpret x = case x of
       EAdd exp0 exp  -&gt; interpret exp0 + interpret exp
@@ -392,20 +392,20 @@ git clone https://github.com/BNFC/bnfc.git
       <p>The string is first lexed and parsed. The file <a href="tutorial/calc/haskell/Interpret.hs"><code>Interpret.hs</code></a>. is modified from <a href="tutorial/calc/haskell/TestCalc.hs"><code>TestCalc.hs</code></a>.</p>
       <pre>
     module Main where
-  
+
     import LexCalc
     import ParCalc
     import AbsCalc
     import Interpreter
-  
+
     import ErrM
-  
+
     main = do
       interact calc
       putStrLn ""
-  
-    calc s = 
-      let Ok e = pExp (myLexer s) 
+
+    calc s =
+      let Ok e = pExp (myLexer s)
       in show (interpret e)
 </pre>
       <p>
@@ -422,9 +422,9 @@ git clone https://github.com/BNFC/bnfc.git
       EMul exp0 exp  -&gt; failure x
       EDiv exp0 exp  -&gt; failure x
       EInt n  -&gt; failure x
-  
+
     type Result = Err String
-  
+
     failure :: Show a =&gt; a -&gt; Result
     failure x = Bad $ "Undefined case: " ++ show x
 </pre>
@@ -438,7 +438,7 @@ git clone https://github.com/BNFC/bnfc.git
 </pre>
       <p>Run on command-line input:</p>
       <pre>
-    echo "1 + 2 * 3" | ./Interpret 
+    echo "1 + 2 * 3" | ./Interpret
     7
 </pre>
       <p>Run on file input (<a href="tutorial/calc/ex1.calc"><code>ex1.calc</code></a>):</p>
@@ -468,19 +468,19 @@ git clone https://github.com/BNFC/bnfc.git
       <h2>Inside the abstract syntax Java classes</h2>
       <pre>
     public abstract class Exp implements java.io.Serializable {
-  
+
     // some code that we explain later
     }
-  
+
     public class EAdd extends Exp {
       public final Exp exp_1, exp_2;
       public EAdd(Exp p1, Exp p2) { exp_1 = p1; exp_2 = p2; }
-  
+
     // some more code that we explain later
     }
-  
+
     /* the same for ESub, EMul, EDiv */
-  
+
     public class EInt extends Exp {
       public final Integer integer_;
       public EInt(Integer p1) { integer_ = p1; }
@@ -503,14 +503,14 @@ git clone https://github.com/BNFC/bnfc.git
         public R visit(Calc.Absyn.EInt p, A arg);
       }
     }
-  
+
     public class EAdd extends Exp {
       public final Exp exp_1, exp_2;
       public EAdd(Exp p1, Exp p2) { exp_1 = p1; exp_2 = p2; }
-  
-      public &lt;R,A&gt; R accept(Calc.Absyn.Exp.Visitor&lt;R,A&gt; v, A arg) 
-      { 
-        return v.visit(this, arg); 
+
+      public &lt;R,A&gt; R accept(Calc.Absyn.Exp.Visitor&lt;R,A&gt; v, A arg)
+      {
+        return v.visit(this, arg);
       }
 </pre>
       <p>
@@ -536,21 +536,21 @@ git clone https://github.com/BNFC/bnfc.git
       <p>The program uses the visitor skeleton as basis, with <code>Integer</code> as return type and <code>Object</code> as argument type (a dummy argument):</p>
       <pre>
     private static class Calculator implements Exp.Visitor&lt;Integer,Object&gt; {
-  
+
       public Integer visit(Calc.Absyn.EAdd p,Object o)
       {
         Integer a = p.exp_1.accept(this, null);
         Integer b = p.exp_2.accept(this, null);
         return a + b;
       }
-  
+
       /* correspondingly for ESub, EMul, EDiv */
-  
+
       public Integer visit(Calc.Absyn.EInt p, Object o)
       {
         return p.integer_;
       }
-    }    
+    }
 </pre>
       <p>
         <!-- NEW -->
@@ -560,24 +560,24 @@ git clone https://github.com/BNFC/bnfc.git
       <pre>
     package Calc;
     import Calc.Absyn.*;
-  
+
     public class Interpreter {
-    
-      public static Integer interpret(Exp e) 
+
+      public static Integer interpret(Exp e)
       {
     Exp exp = (Exp)e ;
     return interpretExp(exp, null) ;
       }
-  
-      private static Integer interpretExp(Exp e, Object o) 
+
+      private static Integer interpretExp(Exp e, Object o)
       {
     return e.accept(new Calculator(), null) ;
       }
-  
+
       private static class Calculator implements Exp.Visitor&lt;Integer,Object&gt; {
-  
+
       // the tree traversal: see previous section
-      }    
+      }
     }
 </pre>
       <p>
@@ -595,7 +595,7 @@ git clone https://github.com/BNFC/bnfc.git
           p.exp_2.accept(new ExpVisitor&lt;R,A&gt;(), arg);
           return null;
         }
-  
+
         public R visit(Calc.Absyn.EInt p, A arg)
         {
           /* Code For EInt Goes Here */
@@ -657,9 +657,9 @@ git clone https://github.com/BNFC/bnfc.git
         struct { Integer integer_; } eint_;
       } u;
     };
-  
+
     typedef struct Exp_ *Exp ;
-  
+
     Exp make_EAdd(Exp p0, Exp p1);
     Exp make_ESub(Exp p0, Exp p1);
     Exp make_EMul(Exp p0, Exp p1);
@@ -698,7 +698,7 @@ git clone https://github.com/BNFC/bnfc.git
       <p>The skeleton defines <code>visit</code> functions for all categories using case analysis over constructor tags.</p>
       <pre>
     void visitInteger(Integer i);
-  
+
     void visitExp(Exp _p_)
     {
       switch(_p_-&gt;kind)
@@ -708,9 +708,9 @@ git clone https://github.com/BNFC/bnfc.git
         visitExp(_p_-&gt;u.eadd_.exp_1);
         visitExp(_p_-&gt;u.eadd_.exp_2);
         break;
-  
+
       /* similarly for other binary ops */
-  
+
       case is_EInt:
         /* Code for EInt Goes Here */
         visitInteger(_p_-&gt;u.eint_.integer_);
@@ -731,7 +731,7 @@ git clone https://github.com/BNFC/bnfc.git
     #include "Printer.h"
     #include "Absyn.h"
     #include "Interpreter.h"
-  
+
     int main(int argc, char ** argv)
     {
       FILE *input;
@@ -757,7 +757,7 @@ git clone https://github.com/BNFC/bnfc.git
 </pre>
       <p>Run on command-line input:</p>
       <pre>
-    echo "1 + 2 * 3" | ./interpret 
+    echo "1 + 2 * 3" | ./interpret
     7
 </pre>
       <p>Run on file input:</p>
@@ -772,15 +772,15 @@ git clone https://github.com/BNFC/bnfc.git
       <p>We want to build a grammar of "C--", a fragment of C sufficient for parsing the following Fibonacci program:</p>
       <pre>
     // a fibonacci function showing most features of the CMM language
-  
-    int mx () 
+
+    int mx ()
     {
       return 5000000 ;
     }
-  
-    int main () 
+
+    int main ()
     {
-      int lo ; 
+      int lo ;
       int hi ;
       lo = 1 ;
       hi = lo ;
@@ -849,22 +849,22 @@ git clone https://github.com/BNFC/bnfc.git
       <pre>
   comment "//" ;
   comment "/*" "*/" ;
-  
+
   Prog. Program  ::= [Function] ;
   Fun.  Function ::= Type Ident "(" [Decl] ")" "{" [Stm] "}" ;
   Dec.  Decl     ::= Type [Ident] ;
-  
+
   terminator Function "" ;
   terminator Stm "" ;
   separator  Decl "," ;
   separator  nonempty Ident "," ;
-  
+
   SDecl.   Stm ::= Decl ";"  ;
   SExp.    Stm ::= Exp ";" ;
   SBlock.  Stm ::= "{" [Stm] "}" ;
   SWhile.  Stm ::= "while" "(" Exp ")" Stm ;
   SReturn. Stm ::= "return" Exp  ";" ;
-  
+
   EAss.    Exp  ::= Ident "=" Exp ;
   ELt.     Exp1 ::= Exp2 "&lt;" Exp2 ;
   EAdd.    Exp2 ::= Exp2 "+" Exp3 ;
@@ -875,11 +875,11 @@ git clone https://github.com/BNFC/bnfc.git
   EStr.    Exp4 ::= String ;
   EInt.    Exp4 ::= Integer ;
   EDouble. Exp4 ::= Double ;
-  
+
   coercions Exp 4 ;
-  
+
   separator Exp "," ;
-  
+
   TInt.    Type ::= "int" ;
   TDouble. Type ::= "double" ;
 </pre>
