@@ -902,7 +902,7 @@ git clone https://github.com/BNFC/bnfc.git
       <h2>Token definitions</h2>
       <p>A grammar can define new token types by using regular expressions. Here is an example of the format:</p>
       <pre>
-    token CIdent (letter | (letter | digit | '_')*) ;
+    token CIdent (letter (letter | digit | '_')*) ;
 </pre>
       <p>See LBNF report for more information.</p>
       <p>
@@ -911,7 +911,7 @@ git clone https://github.com/BNFC/bnfc.git
       <h2>Remembering the position of a token</h2>
       <p>The position of a token can be passed to the syntax tree:</p>
       <pre>
-    position token CIdent (letter | (letter | digit | '_')*) ;
+    position token CIdent (letter (letter | digit | '_')*) ;
 </pre>
       <p>See LBNF report for more information.</p>
       <p>
