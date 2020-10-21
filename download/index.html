@@ -1,11 +1,12 @@
 ---
 layout: default
 ---
-The <a href="https://github.com/BNFC/bnfc/releases/latest">Github release page</a> might have a newer release not listed here
+Browse the <a href="https://github.com/BNFC/bnfc/releases/latest">Github release page</a> for clickable release notes and the latest releases (that might not be listed here).
 {% for release in site.categories['releases'] %}
 <h3>BNFC {{ release.version }}</h3>
 <div class="row">
   <div class="col-md-6">
+    <p><span class="text-right text-muted">{{release.date | date: "%Y-%m-%d" }}</span></p>
     {% include download-links.html release=release %}
   </div>
   <div class="col-md-6">

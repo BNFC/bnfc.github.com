@@ -6,79 +6,103 @@ layout: default
   <p><a href="http://www.clt.gu.se/">Centre for Language Technology</a></p>
   <p>Chalmers University of Technology and University of Gothenburg</p>
 </div>
+
 <div class="row section">
+
   <div class="col-md-6">
     <h2>What is the BNF Converter?</h2>
     <p>The BNF Converter is a compiler construction tool generating a compiler
-      front-end from a <b>Labelled BNF grammar</b>. It is currently able to
-      generate C, C++, C#, Haskell, Java, and OCaml, as well as XML
-      representations.
+      front-end from a <b>Labelled BNF grammar</b>. It is currently
+      generating code for the target languages
+      Haskell, Agda, C, C++, C#, Java, and OCaml,
+      as well as XML representations and Pygment syntax highlighters.
     </p>
     <p>Given a <b>Labelled BNF grammar</b> the tool produces:</p>
     <ul>
-      <li>an abstract syntax implementation</li>
-      <li>a case skeleton for the abstract syntax in the same language</li>
+      <li>an <i>abstract syntax</i> implementation in the target language,</li>
+      <li>a case skeleton for the abstract syntax in the target language,</li>
+      <li>a <i>pretty-printer</i> in the target language,</li>
       <li>an <a href="http://www.haskell.org/alex">Alex</a>,
         <a href="http://www.cs.princeton.edu/~appel/modern/java/JLex/">JLex</a>,
-        or <a href="http://flex.sourceforge.net/">Flex</a> lexer generator file </li>
+        or <a href="http://flex.sourceforge.net/">Flex</a> <i>lexer</i> generator file ,</li>
       <li>a <a href="http://www.haskell.org/happy">Happy</a>,
         <a href="http://www2.cs.tum.edu/projects/cup/">CUP</a>,
         or <a href="http://www.gnu.org/software/bison/bison.html">Bison</a>
-        parser generator file</li>
-      <li>a pretty-printer as a Haskell/Java/C++/C module </li>
-      <li>a Latex file containing a readable specification of the
-        language </li>
+        <i>parser</i> generator file, and</li>
+      <li>a LaTeX file containing a <i>readable specification</i> of the
+        language.</li>
     </ul>
   </div>
+
   <div id="download-box" class="col-md-6">
     <h2>Download</h2>
     <ul class="nav nav-tabs" role="tablist" id="downloadTab">
-      <li class="active"><a href="#packages" data-toggle="tab">Binaries and sources</a></li>
+      <li class="active"><a href="#github" data-toggle="tab">From GitHub releases</a></li>
+      <li><a href="#packages" data-toggle="tab">From this server</a></li>
+      <li><a href="#stack" data-toggle="tab">Stack</a></li>
       <li><a href="#cabal" data-toggle="tab">Cabal</a></li>
-      <li><a href="#git" data-toggle="tab">git</a></li>
+      <li><a href="#git" data-toggle="tab">dev</a></li>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane active text-center" id="packages">
+      <div class="tab-pane active text-center" id="github">
+        <a href="{{ site.urls.github }}/releases" class="btn btn-primary btn-lg">Download (linux, mac, windows)</a>
+      </div>
+      <div class="tab-pane text-center" id="packages">
         <a href="{{ site.urls.download }}" class="btn btn-primary btn-lg">Download (linux, mac, windows)</a>
+      </div>
+      <div class="tab-pane" id="stack">
+        <p>Install via stack from Stackage:</p>
+        <pre>$ stack install BNFC</pre>
       </div>
       <div class="tab-pane" id="cabal">
         <p>Install by Cabal from Hackage:</p>
-        <pre>$ cabal install bnfc</pre>
+        <pre>$ cabal install BNFC</pre>
       </div>
       <div class="tab-pane" id="git">
-        <p>Current development code (Source repository on <a href="https://github.com/BNFC/bnfc">GitHub</a>)</p>
-        <pre>$ git clone https://github.com/BNFC/bnfc</pre>
+        <p>Current development version (source repository on <a href="{{ site.urls.github }}">GitHub</a>)</p>
+        <pre>$ git clone {{ site.urls.github }}</pre>
       </div>
     </div>
   </div>
+
 </div>
+
 <!-- Here starts the three columns row containing new, resources and book-->
+
 <div class="row section">
+
   <div class="col-md-3">
     <h2>News</h2>
+    <p>Find the latest releases at <a href="{{ site.urls.github }}/releases">{{ site.urls.github }}/releases</a>.</p>
     {% for news in site.posts limit:10 %}
+    <p>
     {% if news.version %}
     <a href="{{ news.url }}"><strong>BNFC release {{ news.version }}</strong></a>
     {% elsif news.title %}
     <a href="{{news.link}}"><strong>{{ news.title }}</strong></a>
     {% endif %}
     <span class="text-right text-muted">{{news.date | date: "%Y-%m-%d" }}</span>
-    <hr />
+    </p>
     {% endfor %}
   </div>
+
   <div class="col-md-3 col-md-offset-1">
     <h2>Resources</h2>
     <h3>Documentation</h3>
     <ul>
-      <li><a href="tutorial/bnfc-tutorial.html">Tutorial</a> (<a target="_blank" href="https://github.com/BNFC/bnfc.github.com/tree/master/tutorial">Files</a>)</li>
-      <li><a href="LBNF-report.pdf">Reference Manual</a>
-      <li><a href="http://www.grammaticalframework.org/ipl-book/">IPL book</a>
+      <li><a href="https://bnfc.readthedocs.io">User Manual</a> on Read the Docs (HTML)</li>
+      <li><a href="tutorial/bnfc-tutorial.html">Tutorial</a> (a bit dated)
+          (<a target="_blank" href="https://github.com/BNFC/bnfc.github.com/tree/master/tutorial">Files</a>)</li>
+      <li><a href="https://bnfc.readthedocs.io/en/latest/lbnf.html">LBNF Reference Manual</a>
+          (also as <a href="LBNF-report.pdf">PDF from 2005</a>)</li>
+      <li><a href="http://www.grammaticalframework.org/ipl-book/">IPL book</a></li>
     </ul>
     <h3>Mailing list</h3>
     <p>Send questions, bug reports, usage news, etc, to our
       <a href="{{site.urls.googlegroup}}">Google group</a>.
     </p>
   </div>
+
   <div class="col-md-3 col-md-offset-1">
     <h2>Book</h2>
     <div class="center">
@@ -86,13 +110,20 @@ layout: default
       <p><a href="http://www.grammaticalframework.org/ipl-book/">Implementing Programming Languages</a>, a compiler book using BNFC.</p>
     </div>
   </div>
+
 </div>
+
+
 <h2>A small example</h2>
+
 <div class="row">
+
   <div class="col-md-4">
+    Content of file <code>Calc.cf</code>:
     <table style="border: none;">
+      <!-- <tr><td colspan=7>Content of file <code>Calc.cf</code>.</td></tr> -->
       <tr>
-        <td style="color:#586e75" colspan="7">-- file Calc.bnfc</td>
+        <td style="color:#586e75" colspan="7">-- Calc.cf: A grammar for arithmetical expressions</td>
       </tr>
       <tr>
         <td style="color:#586e75">EAdd.</td>
@@ -145,43 +176,88 @@ layout: default
       </tr>
     </table>
   </div>
+
   <div class="col-md-4">
+    Generate a parser (choose your backend):
+    <!-- Generate a parser by either of these invokations of <code>bnfc</code> and <code>make</code>: -->
     <pre>
-bnfc -haskell Calc.bnfc
-bnfc -c       Calc.bnfc
-bnfc -cpp     Calc.bnfc
-bnfc -csharp  Calc.bnfc
-bnfc -java    Calc.bnfc
-bnfc -ocaml   Calc.bnfc
+bnfc --haskell -d   -m Calc.cf  &&  make
+bnfc --agda    -d   -m Calc.cf  &&  make
+bnfc --c            -m Calc.cf  &&  make
+bnfc --cpp          -m Calc.cf  &&  make
+bnfc --csharp       -m Calc.cf  &&  make
+bnfc --java         -m Calc.cf  &&  make
+bnfc --java-antlr   -m Calc.cf  &&  make
+bnfc --ocaml        -m Calc.cf  &&  make
+bnfc --ocaml-menhir -m Calc.cf  &&  make
     </pre>
   </div>
+
   <div class="col-md-4">
+    Run the test parser, generated e.g. with `--haskell`:
+    <pre>
+echo "1 + 2 * 3 - 4 / 5" | Calc/Test
+    </pre>
+  </div>
+
+  <div class="col-md-4">
+    BNFC functionality overview:
     <img width="200" src="img/bnfc.png" alt="BNFC code generator graph" />
   </div>
+
 </div>
+
+
 <h2>Large examples</h2>
+
 <p>
-  A <a href="https://github.com/BNFC/bnfc/blob/master/examples/C/C.cf">grammar of C</a>.
-  An <a href="https://github.com/BNFC/bnfc/blob/master/examples/C/runtime.c">example C file</a> parsable in type <code>Program</code>.
+  A <a href="{{ site.urls.github }}/blob/master/examples/C/C.cf">grammar of C</a> with
+  an <a href="{{ site.urls.github }}/blob/master/examples/C/runtime.c">example C file</a>.
 </p>
+
 <p>
-  A <a href="https://github.com/BNFC/bnfc/blob/master/examples/Alfa/Alfa.cf">grammar of Alfa</a>
-  (For more details, see the <a href="http://www.cse.chalmers.se/~hallgren/Alfa/">Alfa home page</a>.)
+  A <a href="{{ site.urls.github }}/blob/master/examples/Alfa/Alfa.cf">grammar of Alfa</a>
+  with an <a href="{{ site.urls.github }}/blob/master/examples/Alfa/Sorting.alfa">example Alfa file</a>.
+  (For more details, see the <a href="http://cth.altocumulus.org/~hallgren/Alfa/">Alfa home page</a>.)
 </p>
+
 <p>
-  A <a href="https://github.com/BNFC/bnfc/blob/master/examples/LBNF/LBNF.cf">grammar of LBNF</a>. It is at the
-  same
-  time an example LBNF file, parsable in type <code>Grammar</code>. This
-  grammar is used in the implementation of the BNF Converter.<br>
-  <br>
-  A <a href="http://people.cs.uchicago.edu/~mrainey/java.cf">grammar
-of Java 1.1</a> developed by <a href="http://people.cs.uchicago.edu/~mrainey/">Mike Rainey</a>
+  A <a href="{{ site.urls.github }}/blob/master/examples/LBNF/LBNF.cf">grammar of LBNF</a>.
+  It is at the same time an example LBNF file.
+  The <a href="{{ site.urls.github }}/blob/master/source/src/BNF.cf">development version</a>
+  of this grammar is used in the implementation of the BNF Converter.<br>
+<p>
+
 </p>
+  A <a href="http://people.cs.uchicago.edu/~mrainey/java.cf">grammar of Java 1.1</a>
+  developed by <a href="http://people.cs.uchicago.edu/~mrainey/">Mike Rainey</a>.
+</p>
+
+
 <h2>Authors</h2>
-© Jonas Almström Duregård, Krasimir Angelov, Jean-Philippe Bernardy, Björn Bringert, Johan Broberg, Paul Callaghan,
-Grégoire Détrez, Markus Forsberg, Ola Frid, Peter Gammie, Thomas Hallgren, Patrik Jansson,
-Kristofer Johannisson, Antti-Juhani Kaijanaho, Ulf Norell,
-Michael Pellauer and Aarne Ranta 2002 - 2013.
+
+© Andreas Abel, Jonas Almström Duregård, Krasimir Angelov,
+Jean-Philippe Bernardy, Björn Bringert, Johan Broberg, Kyle Butt,
+Paul Callaghan,
+Grégoire Détrez,
+Markus Forsberg, Ola Frid,
+Peter Gammie,
+Thomas Hallgren, Pascal Hof, Simon Huber,
+Patrik Jansson, Kristofer Johannisson,
+Antti-Juhani Kaijanaho,
+Andreas Lööw,
+Justin Meiners, Kent Mein,
+Ulf Norell,
+Gabriele Paganelli, Michael Pellauer,
+Fabian Ruch, and
+Aarne Ranta 2002 - 2020.
+
+
 <h2>License</h2>
-Free software under GNU General Public License (<a href="https://www.gnu.org/licenses/gpl-2.0.html">GPL</a>).<br />
-<br />
+
+<p>
+Free software under GNU General Public License
+(<a href="https://www.gnu.org/licenses/gpl-2.0.html">GPL</a>).
+<br/>
+<br/>  <!-- some extra vertical space at the end of the page -->
+</p>
