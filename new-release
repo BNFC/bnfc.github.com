@@ -12,7 +12,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     pats = dict(linux32=re.compile(r"bnfc-{}-linux(-i386|32)\.(tar\.gz|tgz|gz)".format(args.version), re.I),
-                linux64=re.compile(r"bnfc-{}-linux(-x86_64|64)\.(tar\.gz|tgz|gz)".format(args.version), re.I),
+                linux64=re.compile(r"bnfc-{}-linux(-x86_64|64)\.(tar\.gz|tgz|gz|binary)".format(args.version), re.I),
                 mac=re.compile(r"bnfc-{}-mac\.pkg".format(args.version), re.I),
                 win=re.compile(r"bnfc-{}-win\.exe".format(args.version), re.I),
                 source=re.compile(r"bnfc-{}\.(tar\.gz|tgz)".format(args.version), re.I))
