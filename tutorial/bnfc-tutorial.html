@@ -363,7 +363,7 @@ git clone https://github.com/BNFC/bnfc.git
       deriving (Eq,Ord,Show)
 </pre>
       <p>The <code>deriving</code> part says that the type <code>Exp</code> has equality and order predicates, and its objects can be shown as strings.</p>
-      <p>The complete code is in the file <a href="tutorial/calc/haskell/AbsCalc.hs"><code>AbsCalc.hs</code></a>.</p>
+      <p>The complete code is in the file <a href="calc/haskell/AbsCalc.hs"><code>AbsCalc.hs</code></a>.</p>
       <p>
         <!-- NEW -->
       </p>
@@ -383,13 +383,13 @@ git clone https://github.com/BNFC/bnfc.git
       EDiv exp0 exp  -&gt; interpret exp0 `div` interpret exp
       EInt n  -&gt; n
 </pre>
-      <p>The complete code is in the file <a href="tutorial/calc/haskell/Interpreter.hs"><code>Interpreter.hs</code></a>.</p>
+      <p>The complete code is in the file <a href="calc/haskell/Interpreter.hs"><code>Interpreter.hs</code></a>.</p>
       <p>
         <!-- NEW -->
       </p>
       <h2>An interpreter in Haskell: the main function</h2>
       <p>We write a module reading string input calling <code>Interpreter.interpret</code>.</p>
-      <p>The string is first lexed and parsed. The file <a href="tutorial/calc/haskell/Interpret.hs"><code>Interpret.hs</code></a>. is modified from <a href="tutorial/calc/haskell/TestCalc.hs"><code>TestCalc.hs</code></a>.</p>
+      <p>The string is first lexed and parsed. The file <a href="calc/haskell/Interpret.hs"><code>Interpret.hs</code></a>. is modified from <a href="calc/haskell/TestCalc.hs"><code>TestCalc.hs</code></a>.</p>
       <pre>
     module Main where
 
@@ -413,7 +413,7 @@ git clone https://github.com/BNFC/bnfc.git
       </p>
       <h2>Skeleton for tree processing in Haskell</h2>
       <p>Recursive functions making case analysis on trees is used in almost all components of the compiler.</p>
-      <p>BNFC gives a template for this, the <strong>skeleton</strong> file <a href="tutorial/calc/haskell/SkelCalc.hs"><code>SkelCalc.hs</code></a>, with a dummy tree processing function:</p>
+      <p>BNFC gives a template for this, the <strong>skeleton</strong> file <a href="calc/haskell/SkelCalc.hs"><code>SkelCalc.hs</code></a>, with a dummy tree processing function:</p>
       <pre>
     transExp :: Exp -&gt; Result
     transExp x = case x of
@@ -441,7 +441,7 @@ git clone https://github.com/BNFC/bnfc.git
     echo "1 + 2 * 3" | ./Interpret
     7
 </pre>
-      <p>Run on file input (<a href="tutorial/calc/ex1.calc"><code>ex1.calc</code></a>):</p>
+      <p>Run on file input (<a href="calc/ex1.calc"><code>ex1.calc</code></a>):</p>
       <pre>
     ./Interpret &lt; ex1.calc
     9102
@@ -455,12 +455,12 @@ git clone https://github.com/BNFC/bnfc.git
       <p>For each constructor of the category, a class extending the base class.</p>
       <p>This means quite a few files, put into the subdirectory <code>Calc/Absyn/</code>:</p>
       <pre>
-    <a href="tutorial/calc/java/Calc/Absyn/EAdd.java">Calc/Absyn/EAdd.java</a>
-    <a href="tutorial/calc/java/Calc/Absyn/EDiv.java">Calc/Absyn/EDiv.java</a>
-    <a href="tutorial/calc/java/Calc/Absyn/EInt.java">Calc/Absyn/EInt.java</a>
-    <a href="tutorial/calc/java/Calc/Absyn/EMul.java">Calc/Absyn/EMul.java</a>
-    <a href="tutorial/calc/java/Calc/Absyn/ESub.java">Calc/Absyn/ESub.java</a>
-    <a href="tutorial/calc/java/Calc/Absyn/Exp.java">Calc/Absyn/Exp.java</a>
+    <a href="calc/java/Calc/Absyn/EAdd.java">Calc/Absyn/EAdd.java</a>
+    <a href="calc/java/Calc/Absyn/EDiv.java">Calc/Absyn/EDiv.java</a>
+    <a href="calc/java/Calc/Absyn/EInt.java">Calc/Absyn/EInt.java</a>
+    <a href="calc/java/Calc/Absyn/EMul.java">Calc/Absyn/EMul.java</a>
+    <a href="calc/java/Calc/Absyn/ESub.java">Calc/Absyn/ESub.java</a>
+    <a href="calc/java/Calc/Absyn/Exp.java">Calc/Absyn/Exp.java</a>
 </pre>
       <p>
         <!-- NEW -->
@@ -556,7 +556,7 @@ git clone https://github.com/BNFC/bnfc.git
         <!-- NEW -->
       </p>
       <h2>Java code around tree processing</h2>
-      <p>The complete code is in the file <a href="tutorial/calc/java/Calc/Interpreter.java"><code>Interpreter.java</code></a>:</p>
+      <p>The complete code is in the file <a href="calc/java/Calc/Interpreter.java"><code>Interpreter.java</code></a>:</p>
       <pre>
     package Calc;
     import Calc.Absyn.*;
@@ -584,7 +584,7 @@ git clone https://github.com/BNFC/bnfc.git
         <!-- NEW -->
       </p>
       <h2>Tree processing in Java: the skeleton</h2>
-      <p>You can use the BNFC-generated file <a href="tutorial/calc/java/Calc/VisitSkel.java"><code>Calc/VisitSkel.java</code></a> as a template for writing your own visitor applications:</p>
+      <p>You can use the BNFC-generated file <a href="calc/java/Calc/VisitSkel.java"><code>Calc/VisitSkel.java</code></a> as a template for writing your own visitor applications:</p>
       <pre>
     public class VisitSkel {
       public class ExpVisitor&lt;R,A&gt; implements Exp.Visitor&lt;R,A&gt; {
@@ -609,7 +609,7 @@ git clone https://github.com/BNFC/bnfc.git
         <!-- NEW -->
       </p>
       <h2>An interpreter in Java: main class</h2>
-      <p>The program <a href="tutorial/calc/java/Calc/Interpret.java"><code>Interpret.java</code></a> modifies the BNFC-generated <a href="tutorial/calc/java/Calc/Test.java"><code>Test.java</code></a>, by changing the tree output to a call of the interpreter:</p>
+      <p>The program <a href="calc/java/Calc/Interpret.java"><code>Interpret.java</code></a> modifies the BNFC-generated <a href="calc/java/Calc/Test.java"><code>Test.java</code></a>, by changing the tree output to a call of the interpreter:</p>
       <pre>
     public class Interpret {
       public static void main(String args[]) throws Exception
@@ -666,7 +666,7 @@ git clone https://github.com/BNFC/bnfc.git
     Exp make_EDiv(Exp p0, Exp p1);
     Exp make_EInt(Integer p0);
 </pre>
-      <p>The complete code is in the files <a href="tutorial/calc/c/Absyn.h"><code>Absyn.h</code></a> and <a href="tutorial/calc/c/Absyn.c"><code>Absyn.c</code></a>.</p>
+      <p>The complete code is in the files <a href="calc/c/Absyn.h"><code>Absyn.h</code></a> and <a href="calc/c/Absyn.c"><code>Absyn.c</code></a>.</p>
       <p>
         <!-- NEW -->
       </p>
@@ -690,7 +690,7 @@ git clone https://github.com/BNFC/bnfc.git
       }
     }
 </pre>
-      <p>The complete code is in the files <a href="tutorial/calc/c/Interpreter.h"><code>Interpreter.h</code></a> and <a href="tutorial/calc/c/Interpreter.c"><code>Interpreter.c</code></a>.</p>
+      <p>The complete code is in the files <a href="calc/c/Interpreter.h"><code>Interpreter.h</code></a> and <a href="calc/c/Interpreter.c"><code>Interpreter.c</code></a>.</p>
       <p>
         <!-- NEW -->
       </p>
@@ -718,7 +718,7 @@ git clone https://github.com/BNFC/bnfc.git
       }
     }
 </pre>
-      <p>The complete code is in the files <a href="tutorial/calc/c/Skeleton.h"><code>Skeleton.h</code></a> and <a href="tutorial/calc/c/Skeleton.c"><code>Skeleton.c</code></a>.</p>
+      <p>The complete code is in the files <a href="calc/c/Skeleton.h"><code>Skeleton.h</code></a> and <a href="calc/c/Skeleton.c"><code>Skeleton.c</code></a>.</p>
       <p>
         <!-- NEW -->
       </p>
@@ -745,7 +745,7 @@ git clone https://github.com/BNFC/bnfc.git
       return 1;
     }
 </pre>
-      <p>The complete code is in the file <a href="tutorial/calc/c/Interpret.c"><code>Interpret.c</code></a>, modified from the BNFC-generated <a href="tutorial/calc/c/Test.c"><code>Test.c</code></a>.</p>
+      <p>The complete code is in the file <a href="calc/c/Interpret.c"><code>Interpret.c</code></a>, modified from the BNFC-generated <a href="calc/c/Test.c"><code>Test.c</code></a>.</p>
       <p>
         <!-- NEW -->
       </p>
