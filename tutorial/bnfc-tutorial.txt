@@ -23,7 +23,7 @@ BNFC is a high-level front end to traditional implementation formats
 
 BNFC saves 90% of source code writing in a typical compiler front end.
 
-BNFC can be used for projects carried out in C, C++, C#, F#, Haskell, Java, OCaml.
+BNFC can be used for projects carried out in Agda, C, C++, Haskell, Java, OCaml.
 
 
 #NEW
@@ -71,15 +71,15 @@ If you choose the source package, you need the
 [GHC Haskell Compiler http://www.haskell.org/ghc/]. With GHC in place,
 just unpack the sources, ``cd`` to ``BNFC``, and type ``make``.
 
-If you want to contribute to BNFC (12 persons have!), make sure you use the
-latest Darcs version: give the command
+If you want to contribute to BNFC, make sure you use the
+latest git version: give the command
 ```
   darcs get --partial http://www.cs.chalmers.se/Cs/Research/Language-technology/darcs/BNFC/
 ```
 This requires the version control system
 [Darcs http://darcs.net]. Contributions can be sent in email as darcs patches.
 
-BNFC is licensed under GPL.
+BNFC is licensed under the BSD 3-clause license.
 
 
 #NEW
@@ -92,10 +92,10 @@ When you have BNFC in place (i.e. on your path), you can all it by
 ```
 This gives you a list of available options. The most common choices are:
 ```
-  bnfc -m -c       FILE.cf      # to generate C
-  bnfc -m -cpp_stl FILE.cf      # to generate C++ with STL
-  bnfc -m -java1.5 FILE.cf      # to generate Java 1.5
-  bnfc -m -haskell FILE.cf      # to generate Haskell
+  bnfc -m --c       FILE.cf      # to generate C
+  bnfc -m --cpp     FILE.cf      # to generate C++ with STL
+  bnfc -m --java    FILE.cf      # to generate Java ≥ 1.5
+  bnfc -m --haskell FILE.cf      # to generate Haskell
 ```
 The ``-m`` flag makes BNFC to generate a ``Makefile``. This means
 that, after running ``bnfc``, you can create an executable parser by
@@ -137,7 +137,7 @@ If you want to work in Haskell, C, or C++, skip a few sections now.
 
 Assuming you want to work in Java, do the following:
 ```
-  bnfc -m -java1.5 Calc.cf
+  bnfc -m --java Calc.cf
   make
 ```
 If everything goes fine, this will create a parser test class, which you
@@ -166,7 +166,7 @@ When you called BNFC, you saw it generate lots of files. Most of them were
 
 
 You will need to download and install both of the required tools:
-- [Cup http://www.cs.princeton.edu/~appel/modern/java/CUP/], version 0.10k
+- [http://www2.cs.tum.edu/projects/cup/], version 0.11b
 - [JLex http://www.cs.princeton.edu/~appel/modern/java/JLex/], version 1.2.6
 
 
@@ -190,7 +190,7 @@ directory.
 
 After installing Cup and JLex, compiling with
 ```
-  bnfc -m -java1.5 Calc.cf
+  bnfc -m --java Calc.cf
   make
 ```
 will probably still fail, with a message saying that a class was not found.
@@ -216,7 +216,7 @@ the ``CLASSPATH`` variable is set with the command
 
 Assuming you want to work in Haskell, do the following:
 ```
-  bnfc -m -haskell Calc.cf
+  bnfc -m --haskell Calc.cf
   make
 ```
 If everything goes fine, this will create a parser test executable, which you
@@ -243,8 +243,8 @@ The tools that you need to have installed are
 
 Assuming you want to work in C or C++, do the following:
 ```
-  bnfc -m -c Calc.cf           # in C
-  bnfc -m -cpp_stl Calc.cf     # in C++
+  bnfc -m --c   Calc.cf     # in C
+  bnfc -m --cpp Calc.cf     # in C++
   make
 ```
 If everything goes fine, this will create a parser test executable, which you
@@ -261,9 +261,9 @@ can try out in the following way:
 The tools that you need to have installed are
 - [GCC http://gcc.gnu.org/] compiler for C and C++
 - [Bison http://www.gnu.org/software/bison/] parser generator for C and C++,
-  version 1.875
+  version ≥ 1.875
 - [Flex http://www.gnu.org/software/flex/] lexer generator for C and C++,
-  version 2.5.4
+  version ≥ 2.5.4
 
 
 The most common source of problems is wrong version of Bison. If the test
@@ -1145,7 +1145,7 @@ See LBNF report for more information.
 
 Java: CLASSPATH, should contain ``.``, Cup directory, JLex directory
 
-C and C++: Bison version, should be 1.875
+C and C++: Bison version, should be ≥ 1.875
 
 All grammars: conflicts. Use parser diagnosis tools to find and solve them!
 

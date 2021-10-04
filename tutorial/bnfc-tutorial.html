@@ -35,7 +35,7 @@
     <p>BNFC makes BNF usable for <strong>implementation</strong> as well.</p>
     <p>BNFC is a high-level front end to traditional implementation formats (in the style of Lex and YACC): <em>"BNFC is a compiler compiler compiler"</em></p>
     <p>BNFC saves 90% of source code writing in a typical compiler front end.</p>
-    <p>BNFC can be used for projects carried out in C, C++, C#, F#, Haskell, Java, OCaml.</p>
+    <p>BNFC can be used for projects carried out in Agda, C, C++, Haskell, Java, OCaml.</p>
     <p>
       <!-- NEW -->
     </p>
@@ -65,11 +65,11 @@
     <p>For the binaries, it is enough to download them and put into a place where you can find executables (such as <code>/usr/local/bin</code> on Unix-like platforms).</p>
     <h2>Working with BNFC sources</h2>
     <p>If you choose the source package, you need the <a href="http://www.haskell.org/ghc/">GHC Haskell Compiler</a>. With GHC in place, just unpack the sources, <code>cd</code> to <code>BNFC</code>, and type <code>make</code>.</p>
-    <p>If you want to contribute to BNFC (12 persons have!), make sure you use the latest Darcs version: give the command</p>
+    <p>If you want to contribute to BNFC, make sure you use the latest git version: give the command</p>
     <pre>
 git clone https://github.com/BNFC/bnfc.git
 </pre>
-    <p>BNFC is licensed under GPL.</p>
+    <p>BNFC is licensed under the BSD 3-clause license.</p>
     <h2>Calling BNFC</h2>
     <p>When you have BNFC in place (i.e. on your path), you can all it by</p>
     <pre>
@@ -77,10 +77,10 @@ git clone https://github.com/BNFC/bnfc.git
 </pre>
     <p>This gives you a list of available options. The most common choices are:</p>
     <pre>
-    bnfc -m -c       FILE.cf      # to generate C
-    bnfc -m -cpp_stl FILE.cf      # to generate C++ with STL
-    bnfc -m -java1.5 FILE.cf      # to generate Java 1.5
-    bnfc -m -haskell FILE.cf      # to generate Haskell
+    bnfc -m --c       FILE.cf      # to generate C
+    bnfc -m --cpp     FILE.cf      # to generate C++ with STL
+    bnfc -m --java    FILE.cf      # to generate Java ≥ 1.5
+    bnfc -m --haskell FILE.cf      # to generate Haskell
 </pre>
     <p>The <code>-m</code> flag makes BNFC to generate a <code>Makefile</code>. This means that, after running <code>bnfc</code>, you can create an executable parser by</p>
     <pre>
@@ -112,7 +112,7 @@ git clone https://github.com/BNFC/bnfc.git
     <p>If you want to work in Haskell, C, or C++, skip a few sections now.</p>
     <p>Assuming you want to work in Java, do the following:</p>
     <pre>
-    bnfc -m -java1.5 Calc.cf
+    bnfc -m --java Calc.cf
     make
 </pre>
     <p>If everything goes fine, this will create a parser test class, which you can try out in the following way:</p>
@@ -137,7 +137,7 @@ git clone https://github.com/BNFC/bnfc.git
     </ul>
     <p>You will need to download and install both of the required tools:</p>
     <ul>
-      <li><a href="http://www.cs.princeton.edu/~appel/modern/java/CUP/">Cup</a>, version 0.10k</li>
+      <li><a href="http://www2.cs.tum.edu/projects/cup/">Cup</a>, version 0.11b</li>
       <li><a href="http://www.cs.princeton.edu/~appel/modern/java/JLex/">JLex</a>, version 1.2.6</li>
     </ul>
     <p>It is safest to take the named versions, even if there were newer ones available.</p>
@@ -150,7 +150,7 @@ git clone https://github.com/BNFC/bnfc.git
     <h2>Setting the Java class path</h2>
     <p>After installing Cup and JLex, compiling with</p>
     <pre>
-    bnfc -m -java1.5 Calc.cf
+    bnfc -m --java Calc.cf
     make
 </pre>
     <p>will probably still fail, with a message saying that a class was not found. Fix this by</p>
@@ -169,7 +169,7 @@ git clone https://github.com/BNFC/bnfc.git
     <h2>Compiling the compiler in Haskell</h2>
     <p>Assuming you want to work in Haskell, do the following:</p>
     <pre>
-    bnfc -m -haskell Calc.cf
+    bnfc -m --haskell Calc.cf
     make
 </pre>
     <p>If everything goes fine, this will create a parser test executable, which you can try out in the following way:</p>
@@ -194,8 +194,8 @@ git clone https://github.com/BNFC/bnfc.git
     <h2>Compiling the compiler in C and C++</h2>
     <p>Assuming you want to work in C or C++, do the following:</p>
     <pre>
-    bnfc -m -c Calc.cf           # in C
-    bnfc -m -cpp_stl Calc.cf     # in C++
+    bnfc -m -c    Calc.cf     # in C
+    bnfc -m --cpp Calc.cf     # in C++
     make
 </pre>
     <p>If everything goes fine, this will create a parser test executable, which you can try out in the following way:</p>
@@ -211,8 +211,8 @@ git clone https://github.com/BNFC/bnfc.git
     <p>The tools that you need to have installed are</p>
     <ul>
       <li><a href="http://gcc.gnu.org/">GCC</a> compiler for C and C++</li>
-      <li><a href="http://www.gnu.org/software/bison/">Bison</a> parser generator for C and C++, version 1.875</li>
-      <li><a href="http://www.gnu.org/software/flex/">Flex</a> lexer generator for C and C++, version 2.5.4</li>
+      <li><a href="http://www.gnu.org/software/bison/">Bison</a> parser generator for C and C++, version ≥ 1.875</li>
+      <li><a href="http://www.gnu.org/software/flex/">Flex</a> lexer generator for C and C++, version ≥ 2.5.4</li>
     </ul>
     <p>The most common source of problems is wrong version of Bison. If the test program always results in <code>error: parse error</code>, check the version with <code>bison --version</code>.</p>
     <p>
@@ -919,7 +919,7 @@ git clone https://github.com/BNFC/bnfc.git
       </p>
       <h2>Common problems</h2>
       <p>Java: CLASSPATH, should contain <code>.</code>, Cup directory, JLex directory</p>
-      <p>C and C++: Bison version, should be 1.875</p>
+      <p>C and C++: Bison version, should be ≥ 1.875</p>
       <p>All grammars: conflicts. Use parser diagnosis tools to find and solve them!</p>
       <p>
         <!-- NEW -->
