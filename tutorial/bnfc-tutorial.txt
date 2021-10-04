@@ -51,8 +51,8 @@ BNFC homepage:
 
 You can obtain
 - a Windows binary
-- a Linux (i386) binary
-- a Mac OS X (i386) binary
+- a Linux (x86_64) binary
+- a Mac OS X (x86_64) binary
 - a source package
 
 
